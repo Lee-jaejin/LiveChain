@@ -13,7 +13,7 @@ app.use(function (state, emitter) {
     available: { video: [], audio: [] },
     selected: { video: null, audio: null }
   }
-
+  
   // toggle on  broadcast start/stop
   emitter.on('liveToggle', function (data) {
     emitter.emit('updateHash', data.live ? data.hash : '')
