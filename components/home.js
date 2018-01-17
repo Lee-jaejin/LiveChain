@@ -17,6 +17,7 @@ var style = css`
 
     .watch { margin-bottom: 1.5rem; }
     .label { margin-bottom: 0.5rem; }
+    .wallet { margin-bottom: 0rem; }
   }
 `
 
@@ -39,7 +40,7 @@ module.exports = function (state, emit) {
       </div>
 
       <div class="wallet">
-          <div class="label">Wallet window</div>
+          <div class="wallet">Wallet window</div>
         ${ link('blue', 'Wallet Window', '/wallet')}
       </div>
     </main>

@@ -22,6 +22,9 @@ app.use(function (state, emitter) {
     }
   }
 
+  // initial tx state
+  
+
   // toggle on  broadcast start/stop
   emitter.on('liveToggle', function (data) {
     emitter.emit('updateHash', data.live ? data.hash : '')
@@ -42,9 +45,29 @@ app.use(function (state, emitter) {
   emitter.on('accList', function () {
     var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8903'));
     var accList = web3.eth.accounts;
-    window.print(accList);
+//    document.write('Account List : ');
+//    document.write(accList);
+
+
+//    emitter.emit('pushState', '/home')
+  });
+
+  // TODO list
+/*
+  // select account
+  emitter.on('selectAcc', function () {
+    // have to make list
   })
 
+  // send Transaction
+  emitter.on('sendTx', function () {
+    
+  })
+
+  // check balance
+
+  // create account
+*/
   // sets available sources for broadcasting
   emitter.on('sourcesAvailable', function (data) {
     state.sources.available = {
