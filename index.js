@@ -2,6 +2,8 @@ var choo = require('choo')
 var html = require('choo/html')
 var css = require('sheetify')
 
+var Web3 = require('web3');
+
 var app = choo()
 
 app.use(function (state, emitter) {
@@ -10,10 +12,16 @@ app.use(function (state, emitter) {
   state.live = false
   state.quality = 3
   state.sources = {
-    available: { video: [], audio: [] },
-    selected: { video: null, audio: null }
+    available: {
+      video: [],
+      audio: []
+    },
+    selected: {
+      video: null,
+      audio: null
+    }
   }
-  
+
   // toggle on  broadcast start/stop
   emitter.on('liveToggle', function (data) {
     emitter.emit('updateHash', data.live ? data.hash : '')
@@ -28,6 +36,13 @@ app.use(function (state, emitter) {
     state.quality = (quality === 1) ? 3 : (quality - 1)
 
     emitter.emit('render')
+  })
+
+  // show accList
+  emitter.on('accList', function () {
+    var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8903'));
+    var accList = web3.eth.accounts;
+    window.print(accList);
   })
 
   // sets available sources for broadcasting
@@ -78,6 +93,7 @@ app.route('/', require('./components/home'))
 app.route('/broadcast', require('./components/broadcast'))
 app.route('/view', require('./components/viewer'))
 app.route('/settings', require('./components/settings'))
+app.route('/wallet', require('./components/wallet'))
 
 // start!
 document.body.appendChild(app.start())

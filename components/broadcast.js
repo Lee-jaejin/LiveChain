@@ -7,6 +7,8 @@ var broadcast = require('../lib/broadcast')
 var button = require('./button')
 var link = require('./link')
 
+var Web3 = require('web3')
+
 var $ = document.getElementById.bind(document)
 
 module.exports = function (state, emit) {
@@ -81,6 +83,9 @@ module.exports = function (state, emit) {
             ${ button('pink',  quality(), qualityToggle) }
             ${ link('pink', 'Settings', '/settings') }
           </section>
+          <section>
+            ${ button('blue', accList(), accList)}
+          </section>
         </header>
         <footer>
           ${ link('grey', 'Back to menu', '/') }
@@ -122,6 +127,14 @@ module.exports = function (state, emit) {
   function quality () {
     var qual = state.quality
     return `${ ((qual === 1) ? 'Low' : (qual === 2) ? 'Medium' : 'High') } quality`
+  }
+
+  // account list
+  function accList () {
+    var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8903"));
+    var listAccount = web3.eth.coinbase;
+    
+    emit('accList')
   }
 
   // start broadcast
