@@ -2,8 +2,6 @@ var html = require('choo/html')
 var onload = require('on-load')
 var css = require('sheetify')
 
-var mediaDevices = require('../lib/media-devices')
-var broadcast = require('../lib/broadcast')
 var button = require('./button')
 var link = require('./link')
 
@@ -14,7 +12,7 @@ var $ = document.getElementById.bind(document)
 module.exports = function (state, emit) {
 
     var div = html `
-      <div class="overlay" id="overlay">
+      <div>
         <header>
           <section>
             ${ button('blue', accList(), accList)}
@@ -33,5 +31,12 @@ module.exports = function (state, emit) {
         var listAccount = web3.eth.coinbase;
 
         emit('accList')
+    }
+
+    function sendTx() {
+        var sender = web3.eth.defaultAccount;
+        document.write(sender);
+
+        emit('sendor');
     }
 }

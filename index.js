@@ -61,7 +61,7 @@ app.use(function (state, emitter) {
 
   // send Transaction
   emitter.on('sendTx', function () {
-    
+    document.write(sender)
   })
 
   // check balance

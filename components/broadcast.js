@@ -84,7 +84,7 @@ module.exports = function (state, emit) {
             ${ link('pink', 'Settings', '/settings') }
           </section>
           <section>
-            ${ button('blue', accList(), accList)}
+            ${ button('blue', 'Account List', accList)}
           </section>
         </header>
         <footer>
