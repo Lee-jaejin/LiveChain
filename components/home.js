@@ -40,8 +40,8 @@ module.exports = function (state, emit) {
       </div>
 
       <div class="wallet">
-          <div class="label">Wallet window</div>
-        ${ link('pink', 'Wallet Window', '/wallet')}
+         <div class="label">Wallet window</div>
+        ${ link('pink', 'Go Wallet', '/wallet')}
       </div>
     </main>
   `

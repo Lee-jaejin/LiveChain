@@ -3,6 +3,7 @@ var html = require('choo/html')
 var css = require('sheetify')
 
 var Web3 = require('web3');
+var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8903'));
 
 var app = choo()
 
@@ -22,6 +23,7 @@ app.use(function (state, emitter) {
     }
   }
 
+  state.acc = '';
   // initial tx state
   
 
@@ -43,13 +45,10 @@ app.use(function (state, emitter) {
 
   // show accList
   emitter.on('accList', function () {
-    var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8903'));
     var accList = web3.eth.accounts;
-//    document.write('Account List : ');
-//    document.write(accList);
 
-
-//    emitter.emit('pushState', '/home')
+    state.acc = accList;
+    document.write('Account List = ' + accList);
   });
 
   // TODO list

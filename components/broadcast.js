@@ -12,7 +12,7 @@ var Web3 = require('web3')
 var $ = document.getElementById.bind(document)
 
 module.exports = function (state, emit) {
-  var divStyle = css`
+    var divStyle = css`
     :host {
       .preview { width: 100%; }
       video { width: 100%; }
@@ -68,7 +68,7 @@ module.exports = function (state, emit) {
     }
   `
 
-  var div = html`
+    var div = html`
     <main class=${ divStyle } onmouseover=${ hoverEnter } onmouseout=${ hoverLeave }>
       <div class="preview">
         <video id="player" autoplay></video>
@@ -80,11 +80,11 @@ module.exports = function (state, emit) {
             ${ button(state.live ? 'pink' : 'green', state.live ? 'Stop' : 'Start', state.live ? stop : start) }
           </section>
           <section>
-            ${ button('pink',  quality(), qualityToggle) }
+            ${ button('pink', quality(), qualityToggle) }
             ${ link('pink', 'Settings', '/settings') }
           </section>
           <section>
-            ${ button('blue', 'Account List', accList)}
+            ${ link('pink', 'Wallet', '/wallet')}
           </section>
         </header>
         <footer>
@@ -98,73 +98,65 @@ module.exports = function (state, emit) {
     </main>
   `
 
-  // attach view lifecycle functions
-  onload(div, load, unload)
+    // attach view lifecycle functions
+    onload(div, load, unload)
 
-  // return function to router
-  return div
+    // return function to router
+    return div
 
-  // open media devices on entry
-  function load () {
-    var selected = state.sources.selected
+    // open media devices on entry
+    function load() {
+        var selected = state.sources.selected
 
-    var video = selected.video
-    var audio = selected.audio
+        var video = selected.video
+        var audio = selected.audio
 
-    mediaDevices.start(video, audio, function (mediaStream) {
-      window.stream = mediaStream
-      $('player').volume = 0
-      $('player').srcObject = mediaStream
-    })
-  }
+        mediaDevices.start(video, audio, function (mediaStream) {
+            window.stream = mediaStream
+            $('player').volume = 0
+            $('player').srcObject = mediaStream
+        })
+    }
 
-  // stop media devices on exit
-  function unload () {
-    mediaDevices.stop()
-  }
+    // stop media devices on exit
+    function unload() {
+        mediaDevices.stop()
+    }
 
-  // generate label for quality toggle button
-  function quality () {
-    var qual = state.quality
-    return `${ ((qual === 1) ? 'Low' : (qual === 2) ? 'Medium' : 'High') } quality`
-  }
+    // generate label for quality toggle button
+    function quality() {
+        var qual = state.quality
+        return `${ ((qual === 1) ? 'Low' : (qual === 2) ? 'Medium' : 'High') } quality`
+    }
 
-  // account list
-  function accList () {
-    var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8903"));
-    var listAccount = web3.eth.coinbase;
-    
-    emit('accList')
-  }
+    // start broadcast
+    function start() {
+        var quality = state.quality
+        broadcast.start(quality, window.stream, function (mediaRecorder, hash) {
+            window.recorder = mediaRecorder
+            emit('liveToggle', {live: true, hash: hash})
+        })
+    }
 
-  // start broadcast
-  function start () {
-    var quality = state.quality
-    broadcast.start(quality, window.stream, function (mediaRecorder, hash) {
-      window.recorder = mediaRecorder
-      emit('liveToggle', { live: true, hash: hash })
-    })
-  }
+    // stop broadcast
+    function stop() {
+        broadcast.stop(window.recorder, function () {
+            emit('liveToggle', false)
+        })
+    }
 
-  // stop broadcast
-  function stop () {
-    broadcast.stop(window.recorder, function () {
-      emit('liveToggle', false)
-    })
-  }
+    // when user changes stream quality
+    function qualityToggle() {
+        emit('qualityToggle')
+    }
 
-  // when user changes stream quality
-  function qualityToggle () {
-    emit('qualityToggle')
-  }
+    // when user's mouse enters window
+    function hoverEnter() {
+        $('overlay').style = "opacity: 1"
+    }
 
-  // when user's mouse enters window
-  function hoverEnter () {
-    $('overlay').style = "opacity: 1"
-  }
-
-  // when user's mouse leaves window
-  function hoverLeave () {
-    $('overlay').style = "opacity: 0"
-  }
+    // when user's mouse leaves window
+    function hoverLeave() {
+        $('overlay').style = "opacity: 0"
+    }
 }
