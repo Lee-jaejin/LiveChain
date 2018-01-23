@@ -13,7 +13,7 @@ module.exports = function (state, emit) {
   var style = css`
     :host {
       .preview { width: 100%; }
-      video { width: 100%; }
+      video { width: 80%; }
 
       .overlay {
         position: fixed;

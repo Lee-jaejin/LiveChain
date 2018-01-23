@@ -4,6 +4,8 @@ var css = require('sheetify')
 var link = require('./link')
 var button = require('./button')
 
+let isTouch = 0;
+
 module.exports = function (state, emit) {
     var style = css`
     :host {
@@ -79,10 +81,13 @@ module.exports = function (state, emit) {
   `
 
     function accList () {
-        if(state.acc != null)
-            return state.acc;
-        else {
+        if(isTouch === 0) {
+            isTouch = 1;
             return 'Account list';
+        }
+        else {
+            isTouch = 0;
+            return state.acc;
         }
     }
     // check for valid hash, then open stream

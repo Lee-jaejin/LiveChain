@@ -5,7 +5,7 @@ module.exports = function (state, emit) {
   var style = css`
     :host {
       width: 100%;
-      video { width: 100%; }
+      video { width: 80%; }
     }
   `
 

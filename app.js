@@ -9,7 +9,7 @@ app.on('ready', function () {
   console.log('The application is ready.');
 
   win = new BrowserWindow({
-    width: 854,
+    width: 1024,
     height: 650,
     minWidth: 550,
     minHeight: 200
