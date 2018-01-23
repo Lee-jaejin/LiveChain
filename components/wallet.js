@@ -63,26 +63,30 @@ module.exports = function (state, emit) {
     return html`
     <main class=${ style }>
       <header>
-          <section>
-            ${ button('pink', List(), List) }
-          </section>
-          <section>
-            ${ link('pink', 'Wallet', accList)}
-          </section>
-        </header>
-        <footer>
+        <section>
+          ${ button('pink', accList(), accListToggle)}
+        </section>
+        <section>
+          ${ link('green', 'Back to video', '/broadcast')}
+        </section>
+      </header>
+      <footer>
+        <section>
           ${ link('grey', 'Back to menu', '/') }
-        </footer>
+        </section>>
+      </footer>
     </main>
   `
 
-    function List () {
-        var list = state.acc;
-        return 'Account List = ' + list;
-    }
-
-    // check for valid hash, then open stream
     function accList () {
-        emit('accList')
+        if(state.acc != null)
+            return state.acc;
+        else {
+            return 'Account list';
+        }
+    }
+    // check for valid hash, then open stream
+    function accListToggle () {
+        emit('accListToggle')
     }
 }

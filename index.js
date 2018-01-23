@@ -23,7 +23,7 @@ app.use(function (state, emitter) {
     }
   }
 
-  state.acc = '';
+  state.acc = null;
   // initial tx state
   
 
@@ -43,14 +43,20 @@ app.use(function (state, emitter) {
     emitter.emit('render')
   })
 
-  // show accList
+  // show accLis
+    /*
   emitter.on('accList', function () {
     var accList = web3.eth.accounts;
 
     state.acc = accList;
-    document.write('Account List = ' + accList);
+    document.write('Account List = ' + state.acc);
   });
+    */
+  emitter.on('accListToggle', function () {
+      state.acc = web3.eth.accounts;
 
+      emitter.emit('render');
+  });
   // TODO list
 /*
   // select account
