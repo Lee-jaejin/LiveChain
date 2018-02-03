@@ -23,7 +23,12 @@ app.use(function (state, emitter) {
     }
   }
 
-  state.acc = null;
+  // initial account state (list)
+  state.accountsProp = {
+      accountAddress: [],
+      accountBalance: []
+  };
+
   // initial tx state
   
 
@@ -48,12 +53,12 @@ app.use(function (state, emitter) {
   emitter.on('accList', function () {
     var accList = web3.eth.accounts;
 
-    state.acc = accList;
-    document.write('Account List = ' + state.acc);
+    state.accountsProp = accList;
+    document.write('Account List = ' + state.accountsProp);
   });
     */
-  emitter.on('accListToggle', function () {
-      state.acc = web3.eth.accounts;
+  emitter.on('viewAccounts', function () {
+//      state.accountsProp = web3.eth.accounts;
 
       emitter.emit('render');
   });

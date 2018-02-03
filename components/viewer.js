@@ -109,7 +109,7 @@ module.exports = function (state, emit) {
             ${ button('grey', 'Fullscreen', fullscreen) }
           </section>
           <section>
-            <div style="background:dd rgba(0, 0, 0, 0)">
+            <div style="background:rgba(0, 0, 0, 0)">
               <input type="range" value=${ 75 } oninput=${ volumeChange } />
             </div>
           </section>

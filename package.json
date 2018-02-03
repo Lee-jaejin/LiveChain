@@ -16,7 +16,8 @@
     "sheetify": "^6.0.1",
     "sheetify-nested": "^1.0.2",
     "web3": "^0.19.1",
-    "webm-cluster-stream": "^1.0.0"
+    "webm-cluster-stream": "^1.0.0",
+    "web3admin": "^0.4.4"
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,18 @@
-var html = require('choo/html')
-var css = require('sheetify')
+var html = require('choo/html');
+var css = require('sheetify');
 
-var link = require('./link')
-var button = require('./button')
+var link = require('./link');
+var button = require('./button');
 
 let isTouch = 0;
+var Web3 = require('web3');
+var web3Admin = require('web3admin');
+
+var web3 = new Web3();
+web3Admin.extend(web3); // web3Admin extends web3 method : e.g. personal, txpool, ...
+
+// web3 provider set
+web3.setProvider(new web3.providers.HttpProvider('http://localhost:8903'));
 
 module.exports = function (state, emit) {
     var style = css`
@@ -65,33 +73,69 @@ module.exports = function (state, emit) {
     return html`
     <main class=${ style }>
       <header>
-        <section>
-          ${ button('pink', accList(), accListToggle)}
-        </section>
-        <section>
+        <div>
+          ${ button('pink', setAccountList(), viewAccountsList)}
+        </div>
+        <div>
           ${ link('green', 'Back to video', '/broadcast')}
-        </section>
+        </div>
       </header>
       <footer>
         <section>
           ${ link('grey', 'Back to menu', '/') }
         </section>>
+        <section> 
+          ${ button('green', 'ProviderSet', providerSet)}
+        </section>
       </footer>
     </main>
   `
 
-    function accList () {
+    function loadAccounts () {
+        var accounts = web3.eth.accounts;
+
+        var accountsJSON = JSON.stringify(accounts);
+
+        console.log(accountsJSON);
+    }
+
+    function sendTx () {
+        web3.eth.sendTransaction();
+        return sendTx;
+    }
+
+    function setAccountList () {
         if(isTouch === 0) {
             isTouch = 1;
             return 'Account list';
         }
         else {
             isTouch = 0;
-            return state.acc;
+            makeAccountList();
+            return state.accountsProp.accountAddress;       // TODO : Need to make method "account list output"
         }
     }
+    // account list output function
+    function makeAccountList () {
+        var accounts = web3.eth.accounts.length;
+        for (var i=0; i < accounts.length; i++ ) {
+            state.accountsProp.accountAddress = accounts;
+            state.accountsProp.accountBalance[i] = web3.eth.getBalance(accounts[i]);
+        }
+    }
+
     // check for valid hash, then open stream
-    function accListToggle () {
-        emit('accListToggle')
+    function viewAccountsList () {
+        emit('viewAccounts')
+    }
+
+    function providerSet () {
+
+        // checking web3 connection
+        if (!web3.isConnected()) {
+            window.alert("Drbsi is not running!");
+        } else {
+            window.alert("Connection success!" + "\nPort number : " + 8903);
+        }
     }
 }

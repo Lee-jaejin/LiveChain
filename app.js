@@ -1,22 +1,35 @@
 var electron = require('electron');
 var path = require('path');
 
-var win = null;
+var mainWin = null;
+var subWin = null;
 var app = electron.app;
-var BrowserWindow = electron.BrowserWindow;
+var MainBrowserWindow = electron.BrowserWindow;
 
 app.on('ready', function () {
   console.log('The application is ready.');
 
-  win = new BrowserWindow({
+  mainWin = new MainBrowserWindow({
     width: 1024,
     height: 650,
     minWidth: 550,
     minHeight: 200
   });
-
-  win.loadURL('file://' + path.join(__dirname, 'index.html'));
-  win.on('close', function () {
-    win = null;
+  /*
+  subWin = new MainBrowserWindow({
+      parent: mainWin,
+      width: 300,
+      height: 200,
   });
+  */
+  mainWin.loadURL('file://' + path.join(__dirname, 'index.html'));
+  mainWin.on('close', function () {
+    mainWin = null;
+  });
+  /*
+  subWin.loadURL('file://' + path.join(__dirname, 'indexTwo.html'));
+  subWin.on('close', function () {
+    subWin = null;
+  });
+  */
 });

@@ -7,8 +7,6 @@ var broadcast = require('../lib/broadcast')
 var button = require('./button')
 var link = require('./link')
 
-var Web3 = require('web3')
-
 var $ = document.getElementById.bind(document)
 
 module.exports = function (state, emit) {
@@ -92,6 +90,10 @@ module.exports = function (state, emit) {
           <div class="share">
             <span>Share</span>
             <input id="share" value=${ state.hash } readonly />
+          </div>
+          <div class="share">
+            <span>Acclist</span>
+            <input id="accOut" value=${ state.accountsProp } readonly />
           </div>
         </footer>
       </div>
