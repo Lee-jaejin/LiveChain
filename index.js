@@ -23,11 +23,7 @@ app.use(function (state, emitter) {
     }
   }
 
-  // initial account state (list)
-  state.accountsProp = {
-      accountAddress: [],
-      accountBalance: []
-  };
+  state.donate = false
 
   // initial tx state
   
@@ -48,36 +44,17 @@ app.use(function (state, emitter) {
     emitter.emit('render')
   })
 
-  // show accLis
-    /*
-  emitter.on('accList', function () {
-    var accList = web3.eth.accounts;
-
-    state.accountsProp = accList;
-    document.write('Account List = ' + state.accountsProp);
-  });
-    */
   emitter.on('viewAccounts', function () {
 //      state.accountsProp = web3.eth.accounts;
-
-      emitter.emit('render');
+    emitter.emit('render');
   });
-  // TODO list
-/*
-  // select account
-  emitter.on('selectAcc', function () {
-    // have to make list
-  })
 
-  // send Transaction
-  emitter.on('sendTx', function () {
-    document.write(sender)
-  })
+  emitter.on('eventDialog', function () {
+//      let win = new eventWindow({width:800, height:600});
+//      win.loadURL('file://' + path.join(__dirname, 'indexTwo.html'))
+    emitter.emit('render');
+  });
 
-  // check balance
-
-  // create account
-*/
   // sets available sources for broadcasting
   emitter.on('sourcesAvailable', function (data) {
     state.sources.available = {
@@ -95,7 +72,7 @@ app.use(function (state, emitter) {
       audio: data.audio
     }
 
-    emitter.emit('pushState', '/broadcast')
+    emitter.emit('pushState', '/broadcast_')
   })
 
   // update stream hash
@@ -127,6 +104,7 @@ app.route('/broadcast', require('./components/broadcast'))
 app.route('/view', require('./components/viewer'))
 app.route('/settings', require('./components/settings'))
 app.route('/wallet', require('./components/wallet'))
+app.route('/broadcast_', require('./components/broadcast_'))
 
 // start!
 document.body.appendChild(app.start())

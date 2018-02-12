@@ -36,7 +36,7 @@ module.exports = function (state, emit) {
 
       <div class="broadcast">
         <div class="label">Start broadcasting</div>
-        ${ link('pink', 'Go live', '/broadcast') }
+        ${ link('pink', 'Go live', '/broadcast_') }
       </div>
 
       <div class="wallet">

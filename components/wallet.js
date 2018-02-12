@@ -1,5 +1,6 @@
 var html = require('choo/html');
 var css = require('sheetify');
+var path = require('path');
 
 var link = require('./link');
 var button = require('./button');
@@ -14,7 +15,10 @@ web3Admin.extend(web3); // web3Admin extends web3 method : e.g. personal, txpool
 // web3 provider set
 web3.setProvider(new web3.providers.HttpProvider('http://localhost:8903'));
 
+var accountLength = web3.eth.accounts.length;
+
 module.exports = function (state, emit) {
+    var address = [[],[]];
     var style = css`
     :host {
       .preview { width: 100%; }
@@ -77,31 +81,43 @@ module.exports = function (state, emit) {
           ${ button('pink', setAccountList(), viewAccountsList)}
         </div>
         <div>
-          ${ link('green', 'Back to video', '/broadcast')}
+          ${ link('green', 'Back to video', '/broadcast_')}
+        </div>
+        <div>
+          ${ link('grey', 'Back to menu', '/') }
+        </div>>
+        <div> 
+          ${ button('green', 'ProviderSet', providerSet)}
         </div>
       </header>
       <footer>
-        <section>
-          ${ link('grey', 'Back to menu', '/') }
-        </section>>
-        <section> 
-          ${ button('green', 'ProviderSet', providerSet)}
-        </section>
+        <ul>
+        <li id="one">
+            ${ address[0][0] } : ${ address[0][1] }
+        </li>
+        <li id="two">
+            ${ address[1][0] } : ${ address[1][1] }
+        </li>
+        </ul>
+        <div>
+            ${ button('pink', 'Donate', sendTx) }
+        </div>
+        <div>
+            ${ eventButton() }
+        </div>
       </footer>
     </main>
   `
 
-    function loadAccounts () {
-        var accounts = web3.eth.accounts;
-
-        var accountsJSON = JSON.stringify(accounts);
-
-        console.log(accountsJSON);
+    function eventButton () {
+        emit('eventDialog');
     }
 
     function sendTx () {
-        web3.eth.sendTransaction();
-        return sendTx;
+        web3.personal.unlockAccount(address[0][0],"1");
+        web3.eth.sendTransaction({from:address[0][0], to:address[1][0], value:web3.toWei(10,'ether')});
+
+        emit('donate');
     }
 
     function setAccountList () {
@@ -112,15 +128,16 @@ module.exports = function (state, emit) {
         else {
             isTouch = 0;
             makeAccountList();
-            return state.accountsProp.accountAddress;       // TODO : Need to make method "account list output"
+            return 'Set';       // TODO : Need to make method "account list output"
         }
     }
     // account list output function
     function makeAccountList () {
-        var accounts = web3.eth.accounts.length;
-        for (var i=0; i < accounts.length; i++ ) {
-            state.accountsProp.accountAddress = accounts;
-            state.accountsProp.accountBalance[i] = web3.eth.getBalance(accounts[i]);
+        var accountsTemp = web3.eth.accounts;
+        for (var i=0; i < accountLength; i++ ) {
+            address[i][0] = accountsTemp[i];
+            var bigBalance = web3.eth.getBalance(accountsTemp[i]);
+            address[i][1] = bigBalance.plus(21).toString(10);
         }
     }
 
@@ -133,9 +150,9 @@ module.exports = function (state, emit) {
 
         // checking web3 connection
         if (!web3.isConnected()) {
-            window.alert("Drbsi is not running!");
+            console.log("Drbsi is not running!");
         } else {
-            window.alert("Connection success!" + "\nPort number : " + 8903);
+            console.log("Connection success!" + "\nPort number : " + 8903);
         }
     }
 }
