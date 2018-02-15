@@ -1,9 +1,5 @@
 var choo = require('choo')
-var html = require('choo/html')
 var css = require('sheetify')
-
-var Web3 = require('web3');
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8903'));
 
 var app = choo()
 
@@ -23,11 +19,6 @@ app.use(function (state, emitter) {
     }
   }
 
-  state.donate = false
-
-  // initial tx state
-  
-
   // toggle on  broadcast start/stop
   emitter.on('liveToggle', function (data) {
     emitter.emit('updateHash', data.live ? data.hash : '')
@@ -45,13 +36,11 @@ app.use(function (state, emitter) {
   })
 
   emitter.on('viewAccounts', function () {
-//      state.accountsProp = web3.eth.accounts;
     emitter.emit('render');
+    console.log(state.events);
   });
 
   emitter.on('eventDialog', function () {
-//      let win = new eventWindow({width:800, height:600});
-//      win.loadURL('file://' + path.join(__dirname, 'indexTwo.html'))
     emitter.emit('render');
   });
 
@@ -73,6 +62,7 @@ app.use(function (state, emitter) {
     }
 
     emitter.emit('pushState', '/broadcast_')
+      console.log(state.events);
   })
 
   // update stream hash

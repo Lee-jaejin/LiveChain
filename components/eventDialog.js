@@ -20,8 +20,19 @@ function eventDialog (color, text, onclick) {
   `
 
     return html`
-    <div class=${ style } style=${ bgColor() } onclick=${ onclick }>
+    <div class=${ style }>
+    <button id="close" style=${ bgColor() } onclick=${ onclick }>
       ${ text }
+    </button>
+    <script>
+        const {BrowserWindow} = require('electron').remote;
+
+        const btn_event = document.querySelector('#close');
+
+        btn_event.addEventListener('click', function () {
+            eventWindow = new BrowserWindow();
+        })
+    </script>
     </div>
   `
 

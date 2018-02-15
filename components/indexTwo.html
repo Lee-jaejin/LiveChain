@@ -7,6 +7,18 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <p>SubWindow test</p>
+    <button id="current">button</button>
+
+    <script>
+        const {BrowserWindow} = require('electron').remote;
+
+        const btn_current = document.querySelector('#current');
+
+        btn_current.addEventListener('click', () => {
+            const current = BrowserWindow.getFocusedWindow();
+            const newBrowser = new BrowserWindow();
+//            alert(current.id);
+        })
+    </script>
 </body>
 </html>

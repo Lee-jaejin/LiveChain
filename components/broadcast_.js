@@ -97,6 +97,9 @@ module.exports = function (state, emit) {
                   </div>
                     ${ link('pink', 'Wallet', '/wallet')}
                 </div>
+                <div>
+                    ${ link('pink', 'Settings', '/settings') }
+                </div>
                 <div class="viewerInfo">
                 </div>
             </div>

@@ -1,9 +1,9 @@
 var html = require('choo/html');
 var css = require('sheetify');
-var path = require('path');
 
 var link = require('./link');
 var button = require('./button');
+var eventDialog = require('./eventDialog');
 
 let isTouch = 0;
 var Web3 = require('web3');
@@ -14,8 +14,6 @@ web3Admin.extend(web3); // web3Admin extends web3 method : e.g. personal, txpool
 
 // web3 provider set
 web3.setProvider(new web3.providers.HttpProvider('http://localhost:8903'));
-
-var accountLength = web3.eth.accounts.length;
 
 module.exports = function (state, emit) {
     var address = [[],[]];
@@ -76,42 +74,40 @@ module.exports = function (state, emit) {
   `
     return html`
     <main class=${ style }>
-      <header>
-        <div>
-          ${ button('pink', setAccountList(), viewAccountsList)}
-        </div>
-        <div>
-          ${ link('green', 'Back to video', '/broadcast_')}
-        </div>
-        <div>
-          ${ link('grey', 'Back to menu', '/') }
-        </div>>
-        <div> 
-          ${ button('green', 'ProviderSet', providerSet)}
-        </div>
-      </header>
-      <footer>
-        <ul>
-        <li id="one">
-            ${ address[0][0] } : ${ address[0][1] }
-        </li>
-        <li id="two">
-            ${ address[1][0] } : ${ address[1][1] }
-        </li>
-        </ul>
-        <div>
-            ${ button('pink', 'Donate', sendTx) }
-        </div>
-        <div>
-            ${ eventButton() }
-        </div>
-      </footer>
+      <body>
+          <header>
+            <div>
+              ${ button('pink', setAccountList(), viewAccountsList)}
+            </div>
+            <div>
+              ${ link('green', 'Back to video', '/broadcast_')}
+            </div>
+            <div>
+              ${ link('grey', 'Back to menu', '/') }
+            </div>>
+            <div> 
+              ${ button('green', 'ProviderSet', providerSet)}
+            </div>
+          </header>
+          <footer>
+            <ul>
+            <li id="one">
+                ${ address[0][0] } : ${ address[0][1] }
+            </li>
+            <li id="two">
+                ${ address[1][0] } : ${ address[1][1] }
+            </li>
+            </ul>
+            <div>
+                ${ eventDialog('pink', 'eventDialog') }
+            </div>
+            <div>
+                ${ button('pink', 'Donate', sendTx) }
+            </div>
+          </footer>
+      </body>
     </main>
   `
-
-    function eventButton () {
-        emit('eventDialog');
-    }
 
     function sendTx () {
         web3.personal.unlockAccount(address[0][0],"1");
@@ -128,11 +124,12 @@ module.exports = function (state, emit) {
         else {
             isTouch = 0;
             makeAccountList();
-            return 'Set';       // TODO : Need to make method "account list output"
+            return 'Set';
         }
     }
     // account list output function
     function makeAccountList () {
+        var accountLength = web3.eth.accounts.length;
         var accountsTemp = web3.eth.accounts;
         for (var i=0; i < accountLength; i++ ) {
             address[i][0] = accountsTemp[i];
