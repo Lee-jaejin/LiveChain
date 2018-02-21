@@ -1,9 +1,10 @@
 var html = require('choo/html')
 var css = require('sheetify')
+var eventWindow = null;
 
 module.exports = eventDialog;
 
-function eventDialog (color, text, onclick) {
+function eventDialog (color, text) {
     var style = css`
     :host {
       border: none;
@@ -21,7 +22,7 @@ function eventDialog (color, text, onclick) {
 
     return html`
     <div class=${ style }>
-    <button id="close" style=${ bgColor() } onclick=${ onclick }>
+    <button id="close" class=${ style } style=${ bgColor() }>
       ${ text }
     </button>
     <script>
@@ -31,7 +32,11 @@ function eventDialog (color, text, onclick) {
 
         btn_event.addEventListener('click', function () {
             eventWindow = new BrowserWindow();
+            eventWindow.on('close', function () {
+                eventWindow = null;
+            })
         })
+        
     </script>
     </div>
   `

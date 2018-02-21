@@ -112,8 +112,6 @@ module.exports = function (state, emit) {
     function sendTx () {
         web3.personal.unlockAccount(address[0][0],"1");
         web3.eth.sendTransaction({from:address[0][0], to:address[1][0], value:web3.toWei(10,'ether')});
-
-        emit('donate');
     }
 
     function setAccountList () {
