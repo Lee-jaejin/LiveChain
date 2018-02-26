@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" class="popup">
+
+<head>
+    <title>SHOOT </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../assets/styles/bootstrap.css">
+    <link rel="stylesheet" href="../assets/styles/shoot.css">
+    <link rel="stylesheet" href="../assets/scripts/libs/polaris/polaris.css">
+    <script src="../assets/scripts/libs/jquery-3.3.1.slim.min.js"></script>
+    <script src="../assets/scripts/libs/bootstrap.js"></script>
+    <script src="../assets/scripts/libs/polaris/icheck.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="assets/scripts/libs/html5shiv.min.js"></script>
+	<![endif]-->
+    <script language="Javascript">
+        function frameclose() {
+            parent.close()
+            window.close()
+            self.close()
+        }
+
+    </script>
+    <script language="Javascript">
+        $(document).ready(function() {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_polaris',
+                radioClass: 'iradio_polaris',
+                increaseArea: '-10%' // optional
+            });
+        });
+
+    </script>
+
+</head>
+
+<body class="popup-dark">
+
+    <p class="close"><a href="javascript:frameclose()" class="text-hide">창닫기</a> </p>
+    <div class=" popup-bgimg">
+        <div class="container">
+           
+            <header class="header clearfix">
+                <h3 class="popup-title">Account 개설하기</h3>
+                <h2 class="popup-logo text-hide">SHOOT</h2>
+            </header>
+            
+            <main role="main">
+
+                <div class="account-add">
+                    <h6 class="fw-light mb-3">Account address가 생성되었습니다. </h6>
+
+                    <div class="card">
+                        <div class="card-body">
+                            0x15fs8w2cqw3492582aefae
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 mb-5">
+                    <a class="btn btn-lg btn-pointcolor col-md-8" href="popup_account_04.html" role="button">확인</a>
+                </div>
+            </main>
+            
+        </div>
+        <!--//container-->
+    </div>
+    <!--//popup-bgimg-->
+</body>
+
+</html>
