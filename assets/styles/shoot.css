@@ -1,0 +1,119 @@
+@import url("nanumbarungothic.css");
+
+html {font-size:14px;}
+body {color:#212121; font-family: 'NanumBarunGothic', sans-serif;}
+iframe {border:0; margin:0;}
+/* POPUP DARK */
+.popup {height:100%;}
+.popup-dark { background: linear-gradient(90deg, rgba(67,68,77,1), rgba(35,36,41,1)); color:rgba(255,255,255,.7)!important; height:100%;}
+.popup-bgimg {background:url('../images/bg_popup.png') no-repeat right bottom;height:100%;}
+.popup-dark .container {width:800px; height:650px; padding:80px 70px 0; margin-right:auto; margin-left:auto;}
+.popup-logo {width:180px; height:53px; background:url('../images/logo_shoot.svg') no-repeat;}
+
+.popup-dark .close a {display:block; overflow:hidden; width:32px; height:32px; margin:30px 30px 0 0; background:url('../images/sprites.png') no-repeat 0 0;}
+.popup-dark .close a {background-position:0px -50px;}
+.popup-dark .close a:hover {background-position:-32px -50px;}
+.popup-dark .header {margin-bottom:50px;}
+.popup-title {float:right; font-weight:200; margin-top:25px;}
+.safety {margin-left:10px;}
+.safety em {display:inline-block; width:24px; height:24px; overflow:hidden; text-indent:-1111px; background:url('../images/sprites.png') no-repeat 0 0; margin-right: 5px;vertical-align: middle;}
+.safety em.level00 {background-position:-144px 0px;}
+.safety em.level01 {background-position:-168px 0px;}
+.safety em.level02 {background-position:-192px 0px;}
+.safety em.level03 {background-position:-216px 0px;}
+.popup-dark .card-body {color:#212121; font-size:1.3rem; background:#d4d5d6;}
+
+.account-list{ width: 100%;  height:380px; overflow: hidden;  margin-right: auto;  margin-left: auto;  padding:0; overflow-x:hidden; overflow-y:scroll;}
+.account-list .list {background:rgba(31,32,37,.9); padding:30px 20px; margin-bottom:10px;}
+.account-list .badge-style {background:#313339; padding:0.6rem 1.2rem !important; color:#999;}
+
+.account-list .address {text-align:right; font-size:1.25rem}
+.account-list .balance {text-align:right; font-size:1.25rem}
+.account-list .balance img{float:left; width:30px; height:auto; zoom: 1; /* ie 5,6,7 bug fix */ filter: alpha(opacity=70); opacity: 0.7;}
+.account-list .balance span{font-size:1.9rem;}
+.account-list .balance small{font-size:1rem;}
+
+.btn-pointcolor {color:rgba(255,255,255,.8); background:#118e84; width:210px; font-size:1.2rem; font-weight:400; text-align:center; padding:16px 25px;}
+.btn-pointcolor:hover {color:rgba(255,255,255,1); background:#0f7f76;}
+.btn-pointcolor:focus, .btn-pointcolor.focus { box-shadow: 0 0 0 3px rgba(17, 142, 132, 0.5)!important;}
+
+.btn-ic .btn-pointcolor {text-align:right !important; }
+.btn-ic .btn-pointcolor>em {float:left; display:inline-block; width:12px; height:12px; background:url('../images/sprites.png') no-repeat 0px -82px; margin-top:6px;}
+.btn-ic .btn-pointcolor:first-child>em { background-position: -12px -82px;}
+.btn-ic .btn-pointcolor:first-child {margin-right:10px;}
+
+.fw-light {font-weight:200;}
+.popup-dark .script {color:rgba(255,255,255,.5); font-weight:200;}
+
+/* LAYOUT */
+.wrap {height:100%;}
+.topmenu {position:absolute; left:0; top:0; width:100%; z-index:11; height:56px; background-color: #232429}
+.cntbox {position:absolute; left:0; top:56px; bottom:0; z-index:11; width:100%; min-width:460px; background:#fff;} 
+.videobox {position:absolute; left:0px; right:348px; top:0; bottom: 0; height: 100%;  overflow-x:hidden; overflow-y:scroll; }
+.rightbox {right:0px;}
+.chatbox {position:absolute; right:0; top:0; bottom:0; z-index:11; width:348px; border-left:1px solid #ddd; background:#f5f5f5;}
+
+.chat-live {position:absolute; left:0; right:0; top:140px !important; bottom:200px; z-index:1; overflow:auto; display:block;border-bottom: 1px solid  #ddd; }
+.sponsor {position:relative; background: #eeeee8; height:100px; margin:0; overflow: hidden;}	
+
+.chat-input {position: absolute; bottom: 140px; width:100%;background: #fff; height:60px; margin:0;}
+.wallet {position: absolute; bottom: 0;background: #eeeee8; width:100%; height:140px; margin:0;}
+
+@media all and (max-width:/*1103px/1109px*/1158px) {
+	.cntbox .rightbox {right:0;}
+	.cntbox .videobox {right:348px;}
+	.rightbox .videobox {right:0;}
+}
+@media all and (max-width:/*802px/828px*/857px) {
+	.cntbox .videobox {right:0;}
+	.cntbox .chatbox {display: none !important;}
+	.topmenu .rightbox {display: none !important;}
+}
+/* TOP MENU */
+.menu {position:absolute; right:0; top:0;}
+.menu li {float:left; position:relative; list-style: none;}
+.menu li a {display:block; width:26px; height:26px; overflow:hidden; text-indent:-1111px; background:url('../images/sprites.png') no-repeat 0 0; margin:15px 20px 0 10px;}
+.menu li.search a {background-position:0px -24px;}
+.menu li.search a:hover {background-position:-28px -24px;}
+.menu li.user a {background-position:-56px -24px;}
+.menu li.user a:hover {background-position:-84px -24px;}
+.menu li.drawer a {background-position:-112px -24px;}
+.menu li.drawer a:hover {background-position:-140px -24px;}
+
+#shoot_player { overflow: hidden; position: relative; min-width: 460px; background: #000; max-height: 760px !important; margin: 0 !important; }
+
+/*#shoot_player .shoot_player_size { max-height: 760px;}*/
+#shoot_player .shoot_player_size {padding-bottom: 56.25%; max-height: 760px; height: 0; }
+#shoot_player #video_layer  { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; width: 100%; height: 100%;}
+
+.liveinfo {padding:30px 20px;}
+.videobox .liveinfo .info {display:block;}
+/* 방송정보 */
+.videobox .liveinfo .info {position:relative; z-index:11; padding:0 0 40px 90px; min-height:80px;} 
+.videobox .liveinfo .info .shooter_logo {position:absolute; left:10px; top:0; padding:1px 0 0 1px;}
+.videobox .liveinfo .info ,
+.videobox .liveinfo .info .shooter_logo {-webkit-transition: all 0.2s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease;}
+.videobox .liveinfo .info .shooter_logo img.thum {width:67px; height:67px; border-radius:67px; margin:0 0 0 1px;}
+
+.videobox .liveinfo .info .shooter {margin:0 10px 0 10px; position:relative;} 
+.videobox .liveinfo .info .shooter:after {content:""; display:block; clear:both;}
+.videobox .liveinfo .info .shooter dd.name {margin: 0; font-size:1rem; padding:0 0 2px; }
+.videobox .liveinfo .info .shooter dt.tit {margin: 0; font-size:1.75rem; font-weight:normal; padding:0 0 10px; }
+.videobox .liveinfo .info .shooter dd.hashtag {width:100%;padding:0;margin:10px 0 20px;}
+.videobox .liveinfo .info .shooter dd.hashtag a {padding-right:20px;}
+.videobox .liveinfo .info .shooter dd.detail {margin: 0; font-size:0.857rem; padding:0 0 20px; }
+
+
+/* 컨텐츠 */
+.chatbox h2 {height:40px; padding:13px 0 0 8px; border-bottom:1px solid #e1e1e1;  font-weight:bold; font-size:1.2em; overflow: hidden; margin:0;}
+.chatbox h2 span {margin-left:10px;}
+.headbtn {position:absolute; right:0; top:0;}
+.headbtn li {float:left; position:relative; list-style: none;}
+.headbtn li a {display:block; width:24px; height:24px; overflow:hidden; text-indent:-1111px; background:url('../images/sprites.png') no-repeat 0 0; margin:8px 10px 0 0;}
+.headbtn li.refresh a {background-position:0px 0px;}
+.headbtn li.refresh a:hover {background-position:-24px 0px;}
+.headbtn li.close a {background-position:-48px 0px;}
+
+.chat {background:#fff;padding:20px;}
+
+

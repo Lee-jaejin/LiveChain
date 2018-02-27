@@ -1,13 +1,13 @@
-var choo = require('choo')
-var css = require('sheetify')
+var choo = require('choo');
+var css = require('sheetify');
 
-var app = choo()
+var app = choo();
 
 app.use(function (state, emitter) {
   // initial state
-  state.hash = ''
-  state.live = false
-  state.quality = 3
+  state.hash = '';
+  state.live = false;
+  state.quality = 3;
   state.sources = {
     available: {
       video: [],
@@ -17,23 +17,23 @@ app.use(function (state, emitter) {
       video: null,
       audio: null
     }
-  }
+  };
 
   // toggle on  broadcast start/stop
   emitter.on('liveToggle', function (data) {
-    emitter.emit('updateHash', data.live ? data.hash : '')
-    state.live = data.live
+    emitter.emit('updateHash', data.live ? data.hash : '');
+    state.live = data.live;
 
-    emitter.emit('render')
-  })
+    emitter.emit('render');
+  });
 
   // sets broadcast bitrate
   emitter.on('qualityToggle', function () {
-    var quality = state.quality
-    state.quality = (quality === 1) ? 3 : (quality - 1)
+    var quality = state.quality;
+    state.quality = (quality === 1) ? 3 : (quality - 1);
 
-    emitter.emit('render')
-  })
+    emitter.emit('render');
+  });
 
   emitter.on('viewAccounts', function () {
     emitter.emit('render');
@@ -49,52 +49,54 @@ app.use(function (state, emitter) {
     state.sources.available = {
       video: data.video,
       audio: data.audio
-    }
+    };
 
-    emitter.emit('render')
-  })
+    emitter.emit('render');
+  });
 
   // select broadcast sources
   emitter.on('sourcesSelect', function (data) {
     state.sources.selected = {
       video: data.video,
       audio: data.audio
-    }
+    };
 
-    emitter.emit('pushState', '/broadcast_')
+    emitter.emit('pushState', '/broadcast_');
       console.log(state.events);
-  })
+  });
 
   // update stream hash
   emitter.on('updateHash', function (data) {
-    state.hash = data
-  })
+    state.hash = data;
+  });
 
   // watch stream
   emitter.on('watch', function (data) {
-    emitter.emit('updateHash', data)
+    emitter.emit('updateHash', data);
 
     if (state.hash.length === 64) {
-      emitter.emit('redirect', '/view')
+      emitter.emit('redirect', '/view');
     }
-  })
+  });
 
   // redirect utility
   emitter.on('redirect', function (data) {
-    emitter.emit('pushState', data)
-  })
-})
+    emitter.emit('pushState', data);
+  });
+});
 
 // import base stylesheet
-css('./style.css')
+css('./style.css');
 
 // routes
-app.route('/', require('./components/home'))
-app.route('/broadcast', require('./components/broadcast'))
-app.route('/view', require('./components/viewer'))
-app.route('/settings', require('./components/settings'))
-app.route('/wallet', require('./components/wallet'))
-app.route('/broadcast_', require('./components/broadcast_'))
+app.route('/', require('./components/popup_usermode_appView'));
+app.route('/broadcast', require('./components/broadcast'));
+app.route('/view', require('./components/viewer'));
+app.route('/settings', require('./components/settings'));
+app.route('/wallet', require('./components/wallet'));
+app.route('/broadcast_', require('./components/broadcast_'));
+app.route('/popup_shooter_01_appView', require('./components/popup_shooter_01_appView'));
+app.route('/main_shooter_appView', require('./components/main_shooter_appView'));
 
 // start!
-document.body.appendChild(app.start())
+document.body.appendChild(app.start());

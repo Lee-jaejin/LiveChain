@@ -27,6 +27,7 @@ function eventDialog (color, text) {
     </button>
     <script>
         const {BrowserWindow} = require('electron').remote;
+        var path = require('path');
 
         const btn_event = document.querySelector('#close');
 
@@ -34,7 +35,9 @@ function eventDialog (color, text) {
             eventWindow = new BrowserWindow();
             eventWindow.on('close', function () {
                 eventWindow = null;
-            })
+            });
+
+            eventWindow.loadURL('file://' + path.join(__dirname,'account/popup_account_01.html'));
         })
         
     </script>

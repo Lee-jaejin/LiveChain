@@ -12,12 +12,13 @@
     "hyperdiscovery": "^7.0.0",
     "media-recorder-stream": "^2.1.1",
     "on-load": "^3.2.0",
+    "popper.js": "^1.12.9",
     "pump": "^2.0.0",
     "sheetify": "^6.0.1",
     "sheetify-nested": "^1.0.2",
     "web3": "^0.19.1",
-    "webm-cluster-stream": "^1.0.0",
-    "web3admin": "^0.4.4"
+    "web3admin": "^0.4.4",
+    "webm-cluster-stream": "^1.0.0"
   },
   "repository": {
     "type": "git",
