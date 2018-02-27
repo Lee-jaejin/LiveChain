@@ -22,16 +22,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mafintosh/hypervision.git"
+    "url": "https://github.com/Lee-jaejin/Shoot.git"
   },
   "scripts": {
     "start": "npm run build && electron app.js",
     "build": "node build.js"
   },
-  "author": "Mathias Buus (@mafintosh)",
+  "author": "Mathias Buus (@mafintosh), Lee Jaejin (@kosmos)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mafintosh/hypervision/issues"
+    "url": "https://github.com/Lee-jaejin/Shoot/issues"
   },
-  "homepage": "https://github.com/mafintosh/hypervision"
+  "homepage": "https://github.com/Lee-jaejin/Shoot"
 }
