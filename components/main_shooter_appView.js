@@ -1,10 +1,15 @@
 var html = require('choo/html')
 var path = require('path')
+var onload = require('on-load')
+
+var mediaDevices = require('../lib/media-devices')
+var broadcast = require('../lib/broadcast')
 
 var imgPath = path.join(__dirname,'../assets/images/shooter_profile_01.png');
+var $ = document.getElementById.bind(document)
 
 module.exports = function (state, emit) {
-  return html`
+  var div = html`
     <body>
     <!-- Wrap -->
     <div class="wrap">
@@ -100,4 +105,46 @@ module.exports = function (state, emit) {
 
     </body>
     `
+
+    // attach view lifecycle functions
+    onload(div, load, unload)
+
+    // return function to router
+    return div
+
+    // open media devices on entry
+    function load() {
+        var selected = state.sources.selected
+
+        var video = selected.video
+        var audio = selected.audio
+
+        mediaDevices.start(video, audio, function (mediaStream) {
+            window.stream = mediaStream
+            $('player').volume = 0
+            $('player').srcObject = mediaStream
+        })
+    }
+
+    // stop media devices on exit
+    function unload() {
+        mediaDevices.stop()
+    }
+
+    // start broadcast
+    function start() {
+        var quality = state.quality
+        broadcast.start(quality, window.stream, function (mediaRecorder, hash) {
+            window.recorder = mediaRecorder
+            emit('liveToggle', {live: true, hash: hash})
+        })
+    }
+
+    // stop broadcast
+    function stop() {
+        broadcast.stop(window.recorder, function () {
+            emit('liveToggle', false)
+        })
+    }
+
 }

@@ -5,9 +5,9 @@ body {color:#212121; font-family: 'NanumBarunGothic', sans-serif;}
 iframe {border:0; margin:0;}
 /* POPUP DARK */
 .popup {height:100%;}
-.popup-dark { background: linear-gradient(90deg, rgba(67,68,77,1), rgba(35,36,41,1)); color:rgba(255,255,255,.7)!important; height:100%;}
-.popup-bgimg {background:url('../images/bg_popup.png') no-repeat right bottom;height:100%;}
-.popup-dark .container {width:800px; height:650px; padding:80px 70px 0; margin-right:auto; margin-left:auto;}
+.popup-dark { background: linear-gradient(90deg, rgba(67,68,77,1), rgba(35,36,41,1)); color:rgba(255,255,255,.7)!important; height: 650px;}
+.popup-bgimg {background:url('../images/bg_popup.png') no-repeat right bottom; height: 650px;}
+.popup-dark .container {width:800; height:650; padding:80px 70px 0; margin-right:auto; margin-left:auto;}
 .popup-logo {width:180px; height:53px; background:url('../images/logo_shoot.svg') no-repeat;}
 
 .popup-dark .close a {display:block; overflow:hidden; width:32px; height:32px; margin:30px 30px 0 0; background:url('../images/sprites.png') no-repeat 0 0;}
@@ -33,6 +33,12 @@ iframe {border:0; margin:0;}
 .account-list .balance span{font-size:1.9rem;}
 .account-list .balance small{font-size:1rem;}
 
+.account-add {}
+.usermode {}
+.room-setting {}
+.keeper-entrance {}
+.btn-ent {color: #fff; background-color: #0594a5; border-color: #118e84; border-left-color: #868e96; width:150px;}
+
 .btn-pointcolor {color:rgba(255,255,255,.8); background:#118e84; width:210px; font-size:1.2rem; font-weight:400; text-align:center; padding:16px 25px;}
 .btn-pointcolor:hover {color:rgba(255,255,255,1); background:#0f7f76;}
 .btn-pointcolor:focus, .btn-pointcolor.focus { box-shadow: 0 0 0 3px rgba(17, 142, 132, 0.5)!important;}
@@ -42,6 +48,11 @@ iframe {border:0; margin:0;}
 .btn-ic .btn-pointcolor:first-child>em { background-position: -12px -82px;}
 .btn-ic .btn-pointcolor:first-child {margin-right:10px;}
 
+.btn-mode .btn-pointcolor {text-align:right !important; background: #0594a5;}
+.btn-mode .btn-pointcolor>em {float:left; display:inline-block; width:20px; height:20px; background:url('../images/sprites.png') no-repeat -55px -82px; margin-top:2px;}
+.btn-mode .btn-pointcolor:first-child>em { background-position: -32px -82px;}
+.btn-mode .btn-pointcolor:first-child {margin-right:10px; background: #c32542;}
+
 .fw-light {font-weight:200;}
 .popup-dark .script {color:rgba(255,255,255,.5); font-weight:200;}
 
@@ -49,7 +60,7 @@ iframe {border:0; margin:0;}
 .wrap {height:100%;}
 .topmenu {position:absolute; left:0; top:0; width:100%; z-index:11; height:56px; background-color: #232429}
 .cntbox {position:absolute; left:0; top:56px; bottom:0; z-index:11; width:100%; min-width:460px; background:#fff;} 
-.videobox {position:absolute; left:0px; right:348px; top:0; bottom: 0; height: 100%;  overflow-x:hidden; overflow-y:scroll; }
+.videobox {position:absolute; left:0px; right:348px; top:0; bottom: 0; height: 100%;  overflow-x:hidden; overflow-y:auto; background:#f5f5f5;}
 .rightbox {right:0px;}
 .chatbox {position:absolute; right:0; top:0; bottom:0; z-index:11; width:348px; border-left:1px solid #ddd; background:#f5f5f5;}
 
@@ -62,7 +73,7 @@ iframe {border:0; margin:0;}
 @media all and (max-width:/*1103px/1109px*/1158px) {
 	.cntbox .rightbox {right:0;}
 	.cntbox .videobox {right:348px;}
-	.rightbox .videobox {right:0;}
+	.rightbox .videobox {right:348px;}
 }
 @media all and (max-width:/*802px/828px*/857px) {
 	.cntbox .videobox {right:0;}
@@ -70,6 +81,7 @@ iframe {border:0; margin:0;}
 	.topmenu .rightbox {display: none !important;}
 }
 /* TOP MENU */
+.topmenu .logo {width:120px; height:24px; background:url('../images/logo_shoot.svg') no-repeat 0 0; background-size: 70% auto; }
 .menu {position:absolute; right:0; top:0;}
 .menu li {float:left; position:relative; list-style: none;}
 .menu li a {display:block; width:26px; height:26px; overflow:hidden; text-indent:-1111px; background:url('../images/sprites.png') no-repeat 0 0; margin:15px 20px 0 10px;}
@@ -85,6 +97,27 @@ iframe {border:0; margin:0;}
 /*#shoot_player .shoot_player_size { max-height: 760px;}*/
 #shoot_player .shoot_player_size {padding-bottom: 56.25%; max-height: 760px; height: 0; }
 #shoot_player #video_layer  { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; width: 100%; height: 100%;}
+
+.onair {position:absolute; top:0px; left:0; z-index: 111; padding:10px;}
+
+.onoffswitch {position: relative; width: 100px; -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;}
+.onoffswitch-checkbox {display: none;}
+.onoffswitch-label {display: block; overflow: hidden; cursor: pointer;
+    border: 1px solid #55565f; border-radius: 23px;}
+.onoffswitch-inner {display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s; -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 36px; padding: 0; line-height: 36px; font-size: 14px; color: white; font-weight: 800;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+.onoffswitch-inner:before {content: "ON AIR"; padding-left: 12px; background-color:#df193e; color: #FFFFFF;}
+.onoffswitch-inner:after {content: "OFF AIR"; padding-right: 12px; background-color: #737982; color: #ccc; text-align: right;}
+.onoffswitch-switch { display: block; width: 18px; margin: 10px; background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.3); border-radius: 24px; position: absolute; top: 0; bottom: 0; right: 62px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s; -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; }
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; }
+
 
 .liveinfo {padding:30px 20px;}
 .videobox .liveinfo .info {display:block;}
@@ -112,8 +145,46 @@ iframe {border:0; margin:0;}
 .headbtn li a {display:block; width:24px; height:24px; overflow:hidden; text-indent:-1111px; background:url('../images/sprites.png') no-repeat 0 0; margin:8px 10px 0 0;}
 .headbtn li.refresh a {background-position:0px 0px;}
 .headbtn li.refresh a:hover {background-position:-24px 0px;}
-.headbtn li.close a {background-position:-48px 0px;}
+.headbtn li.closed a {background-position:-48px 0px;}
+.headbtn li.closed a:hover {background-position:-72px 0px;}
 
-.chat {background:#fff;padding:20px;}
+.chat-box {background:#fff;padding:0px;}
+
+/* 채팅 */
+.chat {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+   
+}
+
+/* On Air List */
+
+.promotion {overflow: hidden; position: relative; margin-top:56px; height: 280px; text-align: center; }
+.promotion .pr-box {overflow: hidden; position: relative;  height: 100%; margin: 0 auto;  background: #fafafa; width:100%; }
+.promotion .pr-box span{display:inline-block; margin-top:120px;}
+
+.onairlist {overflow:hidden; position:relative; margin-top:60px; padding:0; }
+
+.list-area {position:relative;}
+
+.inner {margin:0 auto; text-align:center; }
+
+.video-list { position:relative; zoom: 1; font-size: 0; background: padding:0; text-align:left; }
+.video-list:after {display: block; clear: both; content: '';}
+.video-list .video-list-cnt {  text-align: left;}
+.video-list li {display: inline-block; position: relative; width: 228px; min-height: 193px; margin:0 7px; padding-bottom: 31px; vertical-align: top;}
+
+.video-list .thumb-area {display: block; position: relative; width: 228px; height: 128px; margin-bottom: 7px;}
+.video-list img {width:100%;}
+.video-list .video-tit {display: block; display: -webkit-box; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; -webkit-box-orient: vertical; max-height: 38px; padding: 4px 0 0 2px; font-size: 0.93rem; line-height: 18px; color: #212121; word-break: break-all; text-decoration: none;}
+.video-list .video-date {overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px 0 0 2px; font-size: 12px; color: #999;
+}
+.video-list .video-date .name {padding-left:5px; color:#5e5e5e;}
+
+.btn-more-area {clear: both; margin-top: 14px; padding: 24px 0 35px; border-top: 1px solid #f0f0f0; text-align: center;}
+.btn-more-area a { display: inline-block; overflow: hidden; font-size: 16px; color: #999;}
+.btn-more {}
 
 

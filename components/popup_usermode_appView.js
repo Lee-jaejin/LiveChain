@@ -11,8 +11,7 @@ module.exports = function (state, emit) {
               <header class="header clearfix">
                   <h2 class="popup-logo text-hide">SHOOT</h2>
               </header>
-              <main role="main">
-  
+
                   <div class="usermode">
                       <h5 class="fw-light">환영합니다. </h5>
                       <h1 class="fw-light">사용자 모드를 선택해주세요.</h1>
@@ -23,8 +22,6 @@ module.exports = function (state, emit) {
                   </div>
                   <p class="script">가이드 위한 스크립트를 입력합니다.</p>
   
-  
-              </main>
           </div>
           <!--//container-->
       </div>

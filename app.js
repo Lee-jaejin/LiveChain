@@ -2,19 +2,18 @@ var {app, BrowserWindow} = require('electron');
 var path = require('path');
 
 var mainWin = null;
-var subWin = null;
-/*
-var app = electron.app;
-var BrowserWindow = electron.BrowserWindow;
-*/
+
 app.on('ready', function () {
   console.log('The application is ready.');
 
   mainWin = new BrowserWindow({
-      width: 1024,
-      height: 650,
-      minWidth: 550,
-      minHeight: 200
+      minHeight:672,
+      minWidth:1050,
+      height:672,
+      width:1050,
+      webPreferences: {
+          backgroundThrottling:false
+      }
   });
 
   mainWin.loadURL('file://' + path.join(__dirname, 'index.html'));

@@ -23,7 +23,6 @@ module.exports = function (state, emit) {
                 <h3 class="popup-title">Room Setting</h3>
                 <h2 class="popup-logo text-hide">SHOOT</h2>
             </header>
-            <main role="main">
 
                 <div class="room-setting">
                     <h6 class="fw-light mb-3">방 이름을 설정해주세요. (필수) </h6>
@@ -45,8 +44,6 @@ module.exports = function (state, emit) {
                 <div class="mt-5 mb-5">
                     <a class="btn btn-lg btn-pointcolor col-md-8" href=${'/main_shooter_appView'} role="button">확인</a>
                 </div>
-
-            </main>
 
         </div>
         <!--//container-->

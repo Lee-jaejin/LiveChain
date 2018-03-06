@@ -89,7 +89,7 @@ app.use(function (state, emitter) {
 css('./style.css');
 
 // routes
-app.route('/', require('./components/popup_usermode_appView'));
+app.route('/', require('./components/intro'));
 app.route('/broadcast', require('./components/broadcast'));
 app.route('/view', require('./components/viewer'));
 app.route('/settings', require('./components/settings'));
@@ -97,6 +97,11 @@ app.route('/wallet', require('./components/wallet'));
 app.route('/broadcast_', require('./components/broadcast_'));
 app.route('/popup_shooter_01_appView', require('./components/popup_shooter_01_appView'));
 app.route('/main_shooter_appView', require('./components/main_shooter_appView'));
+app.route('/popup_account_01_appView', require('./components/popup_account_01_appView'));
+app.route('/popup_account_02_appView', require('./components/popup_account_02_appView'));
+app.route('/popup_account_03_appView', require('./components/popup_account_03_appView'));
+app.route('/popup_account_04_appView', require('./components/popup_account_04_appView'));
+app.route('/popup_usermode_appView', require('./components/popup_usermode_appView'));
 
 // start!
 document.body.appendChild(app.start());

@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="assets/scripts/libs/polaris/polaris.css">
     <script src="assets/scripts/libs/jquery-3.3.1.slim.min.js"></script>
     <script language="Javascript">
+        var Web3 = require('web3');
+        var web3Admin = require('web3admin');
+
+        var web3 = new Web3();
+        web3Admin.extend(web3);
+
+        web3.setProvider(new web3.providers.HttpProvider('http://localhost:8903'));
+
+        function branch() {
+            if(!web3.isConnected()) {
+                console.log('Please download Shoot client!');
+                //TODO : have to link BI web site to download the client.
+                return '/popup_account_01_appView'; // this return string is just for test
+            }
+            else {
+                var isAccountExist = web3.eth.accounts.length;
+                if (isAccountExist === 0) {
+                    return '/popup_account_01_appView';
+                }
+                else {
+                    return '/popup_account_04_appView';
+                }
+            }
+        }
+
         function frameclose() {
             parent.close()
             window.close()
