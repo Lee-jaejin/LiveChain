@@ -3,7 +3,6 @@ var onload = require('on-load')
 var css = require('sheetify')
 
 var button = require('./button')
-var player = require('./player')
 
 var watch = require('../lib/watch')
 
@@ -102,7 +101,9 @@ module.exports = function (state, emit) {
   `
   var div = html`
     <main class=${ style } onmouseover=${ hoverEnter } onmouseout=${ hoverLeave }>
-      ${ player() }
+      <div id="video_layer">
+        <video id="player" autoplay></video>
+      </div>
       <div class="overlay" id="overlay">
         <header>
           <section>

@@ -1,20 +1,8 @@
-var html = require('choo/html')
-var css = require('sheetify')
+var html = require('choo/html');
 
-module.exports = input
+module.exports = input;
 
-function input (value, oninput) {
-  var style = css`
-    :host {
-      font-size: 16px;
-      padding: 0.4rem 0 0.4rem 0.65rem;
-      width: 14rem;
-      border: none;
-      border-radius: 2px;
-      font-weight: 500;
-      -webkit-user-select: auto;
-    }
-  `
-
-  return html`<input class=${ style } value=${ value } oninput=${ oninput } />`
+function input (value, placeholder, onblur) {
+  return html`<input type="password" class="form-control form-control-lg col-md-7"
+              placeholder=${ placeholder } value=${ value } onblur=${ onblur } />`
 }

@@ -4,85 +4,103 @@ var css = require('sheetify');
 var app = choo();
 
 app.use(function (state, emitter) {
-  // initial state
-  state.hash = '';
-  state.live = false;
-  state.quality = 3;
-  state.sources = {
-    available: {
-      video: [],
-      audio: []
-    },
-    selected: {
-      video: null,
-      audio: null
-    }
-  };
+    // account state
+    state.accountHash = '';
+    state.accountPS = '';
+    state.temp = '';
 
-  // toggle on  broadcast start/stop
-  emitter.on('liveToggle', function (data) {
-    emitter.emit('updateHash', data.live ? data.hash : '');
-    state.live = data.live;
-
-    emitter.emit('render');
-  });
-
-  // sets broadcast bitrate
-  emitter.on('qualityToggle', function () {
-    var quality = state.quality;
-    state.quality = (quality === 1) ? 3 : (quality - 1);
-
-    emitter.emit('render');
-  });
-
-  emitter.on('viewAccounts', function () {
-    emitter.emit('render');
-    console.log(state.events);
-  });
-
-  emitter.on('eventDialog', function () {
-    emitter.emit('render');
-  });
-
-  // sets available sources for broadcasting
-  emitter.on('sourcesAvailable', function (data) {
-    state.sources.available = {
-      video: data.video,
-      audio: data.audio
+    // initial state
+    state.hash = '';
+    state.live = false;
+    state.quality = 3;
+    state.sources = {
+        available: {
+            video: [],
+            audio: []
+        },
+        selected: {
+            video: null,
+            audio: null
+        }
     };
 
-    emitter.emit('render');
-  });
+    // toggle on  broadcast start/stop
+    emitter.on('liveToggle', function (data) {
+        emitter.emit('updateHash', data.live ? data.hash : '');
+        state.live = data.live;
 
-  // select broadcast sources
-  emitter.on('sourcesSelect', function (data) {
-    state.sources.selected = {
-      video: data.video,
-      audio: data.audio
-    };
+        emitter.emit('render');
+    });
 
-    emitter.emit('pushState', '/broadcast_');
-      console.log(state.events);
-  });
+    // sets broadcast bitrate
+    emitter.on('qualityToggle', function () {
+        var quality = state.quality;
+        state.quality = (quality === 1) ? 3 : (quality - 1);
 
-  // update stream hash
-  emitter.on('updateHash', function (data) {
-    state.hash = data;
-  });
+        emitter.emit('render');
+    });
 
-  // watch stream
-  emitter.on('watch', function (data) {
-    emitter.emit('updateHash', data);
+    emitter.on('viewAccounts', function () {
+        emitter.emit('render');
+        console.log(state.events);
+    });
 
-    if (state.hash.length === 64) {
-      emitter.emit('redirect', '/view');
-    }
-  });
+    emitter.on('eventDialog', function () {
+        emitter.emit('render');
+    });
 
-  // redirect utility
-  emitter.on('redirect', function (data) {
-    emitter.emit('pushState', data);
-  });
+    // sets available sources for broadcasting
+    emitter.on('sourcesAvailable', function (data) {
+        state.sources.available = {
+            video: data.video,
+            audio: data.audio
+        };
+
+        emitter.emit('render');
+    });
+
+    // select broadcast sources
+    emitter.on('sourcesSelect', function (data) {
+        state.sources.selected = {
+            video: data.video,
+            audio: data.audio
+        };
+
+        emitter.emit('pushState', '/broadcast_');
+
+        console.log(state.events);
+    });
+
+    // update stream hash
+    emitter.on('updateHash', function (data) {
+        state.hash = data;
+    });
+
+    emitter.on('updateAccountHash', function () {
+        emitter.emit('render');
+    });
+
+    // watch stream
+    emitter.on('watch', function (data) {
+        emitter.emit('updateHash', data);
+
+        if (state.hash.length === 64) {
+            emitter.emit('redirect', '/view');
+        }
+    });
+
+    // redirect utility
+    emitter.on('redirect', function (data) {
+        emitter.emit('pushState', data);
+    });
+
+    emitter.on('account03', function () {
+        emitter.emit('pushState', '/popup_account_03_appView')
+    })
+
+    emitter.on('account02', function () {
+        emitter.emit('pushState', '/popup_account_02_appView')
+    })
 });
 
 // import base stylesheet
@@ -90,11 +108,9 @@ css('./style.css');
 
 // routes
 app.route('/', require('./components/intro'));
-app.route('/broadcast', require('./components/broadcast'));
 app.route('/view', require('./components/viewer'));
 app.route('/settings', require('./components/settings'));
 app.route('/wallet', require('./components/wallet'));
-app.route('/broadcast_', require('./components/broadcast_'));
 app.route('/popup_shooter_01_appView', require('./components/popup_shooter_01_appView'));
 app.route('/main_shooter_appView', require('./components/main_shooter_appView'));
 app.route('/popup_account_01_appView', require('./components/popup_account_01_appView'));

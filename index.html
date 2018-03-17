@@ -19,6 +19,12 @@
 
         web3.setProvider(new web3.providers.HttpProvider('http://localhost:8903'));
 
+        function frameclose() {
+            parent.close()
+            window.close()
+            self.close()
+        }
+
         function branch() {
             if(!web3.isConnected()) {
                 console.log('Please download Shoot client!');
@@ -31,15 +37,9 @@
                     return '/popup_account_01_appView';
                 }
                 else {
-                    return '/popup_account_04_appView';
+                    return '/popup_account_01_appView'; // 04
                 }
             }
-        }
-
-        function frameclose() {
-            parent.close()
-            window.close()
-            self.close()
         }
     </script>
 

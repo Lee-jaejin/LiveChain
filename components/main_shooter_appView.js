@@ -39,7 +39,6 @@ module.exports = function (state, emit) {
                             <!-- Video 소스  -->
                             <div id="video_layer">
                                 <video id="player" autoplay></video>
-                                <!--iframe width="100%" height="100%" src="http://www.youtube.com/embed/nf69DUVVNV0"></iframe-->
                             </div>
                         </div>
                     </div>

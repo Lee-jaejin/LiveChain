@@ -17,7 +17,7 @@ module.exports = function (state, emit) {
 
                     <div class="card">
                         <div class="card-body">
-                            0x15fs8w2cqw3492582aefae
+                            ${ createAccount() }
                         </div>
                     </div>
                 </div>
@@ -32,4 +32,9 @@ module.exports = function (state, emit) {
     <!--//popup-bgimg-->
 </body>
 `
+    function createAccount () {
+        state.accountHash = web3.personal.newAccount(state.accountPS);
+
+        return state.accountHash;
+    }
 }
