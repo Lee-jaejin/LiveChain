@@ -2,8 +2,6 @@ var html = require('choo/html');
 var input = require('./components/input');
 var safetyIcon = require('./components/safetyIcon');
 
-var $ = document.getElementById.bind(document);
-
 module.exports = function (state, emit) {
     return html`
         <body class="popup-dark">

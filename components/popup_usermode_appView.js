@@ -18,7 +18,7 @@ module.exports = function (state, emit) {
                   </div>
                   <div class="btn-mode mt-5 mb-5">
                       <a class="btn btn-lg btn-pointcolor" href=${'/popup_shooter_01_appView'} role="button"><em></em>크리에이터</a>
-                      <!--a class="btn btn-lg btn-pointcolor" href="keeper/popup_keeper_01.html" role="button"><em></em>뷰어</a-->
+                      <a class="btn btn-lg btn-pointcolor" href=${'/popup_keeper_01_appView'} role="button"><em></em>뷰어</a>
                   </div>
                   <p class="script">가이드 위한 스크립트를 입력합니다.</p>
   

@@ -8,6 +8,7 @@ app.use(function (state, emitter) {
     state.accountHash = '';
     state.accountPS = '';
     state.temp = '';
+    state.roomName = '';
 
     // initial state
     state.hash = '';
@@ -76,6 +77,10 @@ app.use(function (state, emitter) {
         state.hash = data;
     });
 
+    emitter.on('updateRoomName', function () {
+        emitter.emit('render');
+    });
+
     emitter.on('updateAccountHash', function () {
         emitter.emit('render');
     });
@@ -118,6 +123,8 @@ app.route('/popup_account_02_appView', require('./components/popup_account_02_ap
 app.route('/popup_account_03_appView', require('./components/popup_account_03_appView'));
 app.route('/popup_account_04_appView', require('./components/popup_account_04_appView'));
 app.route('/popup_usermode_appView', require('./components/popup_usermode_appView'));
+app.route('/popup_keeper_01_appView', require('./components/popup_keeper_01_appView'));
+app.route('/main_shoot_onairlist', require('./components/main_shoot_onairlist'));
 
 // start!
 document.body.appendChild(app.start());
