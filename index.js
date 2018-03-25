@@ -9,11 +9,12 @@ app.use(function (state, emitter) {
     state.accountPS = '';
     state.temp = '';
     state.roomName = '';
+    state.roomEntryAccount = '';
 
     // initial state
     state.hash = '';
     state.live = false;
-    state.quality = 3;
+    state.vquality = 3;
     state.sources = {
         available: {
             video: [],
@@ -106,6 +107,10 @@ app.use(function (state, emitter) {
     emitter.on('account02', function () {
         emitter.emit('pushState', '/popup_account_02_appView')
     })
+
+    emitter.on('usermode', function () {
+        emitter.emit('pushState', '/popup_usermode_appView')
+    })
 });
 
 // import base stylesheet
@@ -125,6 +130,7 @@ app.route('/popup_account_04_appView', require('./components/popup_account_04_ap
 app.route('/popup_usermode_appView', require('./components/popup_usermode_appView'));
 app.route('/popup_keeper_01_appView', require('./components/popup_keeper_01_appView'));
 app.route('/main_shoot_onairlist', require('./components/main_shoot_onairlist'));
+app.route('/accountList', require('./components/accountList'));
 
 // start!
 document.body.appendChild(app.start());

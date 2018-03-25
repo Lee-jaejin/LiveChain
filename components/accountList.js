@@ -4,7 +4,7 @@ var imgPath = path.join(__dirname,'../assets/images/ic_shoot_coin.svg');
 
 module.exports = accountList;
 
-function accountList () {
+function accountList (state, emit) {
     var numberOfAccounts = web3.eth.accounts.length;
     var accounts = web3.eth.accounts;
     var div = [];
@@ -20,14 +20,20 @@ function accountList () {
                 <div class="row">
                     <div class="col-md-3"><span class="badge badge-pill badge-style">BALANCE</span></div>
                     <div class="col-md-9 balance"><img src=${ imgPath }
-                     class="coin"> <span>${ web3.fromWei(web3.eth.getBalance(accounts[i]), 'ether').toString(10) }<small>SHT</small></span></div>
+                     class="coin"> <span>${ balance = web3.fromWei(web3.eth.getBalance(accounts[i]), 'ether').toString(10) }<small>SHT</small></span></div>
                 </div>
             </div>
             
-            <div class="col-md-4"><a class="btn btn-lg btn-pointcolor col-sm-12" href=${ '/popup_usermode_appView' } role="button">입장 <small class="d-block">ENTRANCE</small></a></div>
+            <div class="col-md-4"><a class="btn btn-lg btn-pointcolor col-sm-12" href=${ selectedAccount(i) } role="button">입장 <small class="d-block">ENTRANCE</small></a></div>
         </div>
         `;
     }
 
     return div;
+
+    function selectedAccount(index) {
+        state.roomEntryAccount = accounts[index];
+
+        return '/popup_usermode_appView';
+    }
 }

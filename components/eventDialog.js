@@ -31,14 +31,16 @@ function eventDialog (color, text) {
 
         const btn_event = document.querySelector('#close');
 
-        btn_event.addEventListener('click', function () {
-            eventWindow = new BrowserWindow();
-            eventWindow.on('close', function () {
-                eventWindow = null;
-            });
-
-            eventWindow.loadURL('file://' + path.join(__dirname,'account/popup_account_01.html'));
-        })
+        for (var i=0; i<3; i++) {
+            btn_event.addEventListener('click', function () {
+                eventWindow = new BrowserWindow();
+                eventWindow.on('close', function () {
+                    eventWindow = null;
+                });
+    
+                eventWindow.loadURL('file://' + path.join(__dirname,'account/popup_account_01.html'));
+            })
+        }
         
     </script>
     </div>

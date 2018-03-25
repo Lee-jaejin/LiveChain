@@ -1,6 +1,7 @@
 var html = require('choo/html');
 var path = require('path');
 var onload = require('on-load');
+var chatBox = require('./components/chatBox');
 
 var mediaDevices = require('../lib/media-devices');
 var broadcast = require('../lib/broadcast');
@@ -63,7 +64,7 @@ module.exports = function (state, emit) {
                                 <img src=${imgPath} alt="SHOOTER 로고" class="thum">
                             </div>
                             <dl class="shooter">
-                                <dd class="name">GOODDAY 굿데이</dd>
+                                <dd class="name">${ state.roomEntryAccount }</dd>
                                 <input value=${ state.hash }>
                                 <dt class="tit">${ state.roomName }</dt>
                                 <dd class="hashtag" id="hashtag"><a href="">#괌</a><a href="">#GUAM</a><a href="">#롱보드</a><a href="">#괌여행</a><a href="">#여행</a><a href="">#제주항공</a><a href="">#롱보드여신</a><a href="">#JJ노마드</a></dd>
@@ -74,40 +75,7 @@ module.exports = function (state, emit) {
                     <!--  //liveinfo -->
                 </div>
                 <!-- //videobox -->
-    
-                <!-- chatbox -->
-                <div class="chatbox">
-                    <!-- 제목 -->
-                    <h2>채팅 <span>287</span></h2>
-                    <!-- //제목 -->
-                    <!-- 헤드버튼 -->
-                    <div id="headbtn" class="headbtn">
-                        <ul>
-                            <li class="refresh"><a href="javascript:;">새로고침</a></li>
-                            <li class="closed"><a href="javascript:;"> 채팅숨기기</a></li>
-                        </ul>
-                    </div>
-    
-                    <div class="sponsor">후원금</div>
-    
-                    <!-- chat-live -->
-                    <div id="chat-live" class="chat-live">
-    
-    
-                        <!-- 채팅채팅 -->
-                        <div class="chat" id="">
-                            chat
-                        </div>
-                        <!-- //채팅채팅 -->
-    
-                    </div>
-                    <!-- //chat-live -->
-    
-                    <div class="chat-input">입력</div>
-                    <div class="wallet">지갑</div>
-    
-                </div>
-                <!-- //chatbox -->
+                ${ chatBox(state.roomEntryAccount) }
             </div>
             <!-- //cntbox -->
         </div>
@@ -142,7 +110,7 @@ module.exports = function (state, emit) {
 
     // start broadcast
     function start() {
-        var quality = state.quality;
+        var quality = state.vquality;
         broadcast.start(quality, window.stream, function (mediaRecorder, hash) {
             window.recorder = mediaRecorder;
             emit('liveToggle', {live: true, hash: hash})
