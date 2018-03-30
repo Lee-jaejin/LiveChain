@@ -165,7 +165,7 @@ function chatBox (account) {
                 <!-- 채팅입력 -->
                 <div class="chat-input">
                     <div class="input-group">
-                        <a href="main_keeper_coin.html" class="chat-coin"><img src=${ imgPath } class="coin"></a>
+                        <a onclick=${ coinModalWindow } class="chat-coin"><img src=${ imgPath } class="coin"></a>
                         <input type="text" class="form-control chat-text" placeholder="대화를 나눠보세요.">
                         <button class="btn text-hide" type="button"><sapn class="chat-btn">입력</sapn></button>
                     </div>
@@ -180,4 +180,21 @@ function chatBox (account) {
                 <!-- //MY Wallet -->
             </div>
     `;
+
+    function coinModalWindow () {
+        const {BrowserWindow} = require('electron').remote;
+
+        var coinWindow = new BrowserWindow({
+            width : 348,
+            height : 470,
+            resizable : false,
+            frame : false
+        });
+        coinWindow.show();
+        coinWindow.on('close', function () {
+            coinWindow = null;
+        });
+
+        coinWindow.loadURL('file://' + path.join(__dirname,'main_keeper_coin.html'));
+    }
 }

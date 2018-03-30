@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>SHOOTER</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../assets/styles/bootstrap.css">
+    <link rel="stylesheet" href="../assets/styles/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../assets/styles/shoot.css">
+    <script src="../assets/scripts/bootstrap.js"></script>
+    <!--[if lt IE 9]>
+		<script src="../assets/scripts/libs/html5shiv.min.js"></script>
+	<![endif]-->
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="../assets/scripts/libs/jquery.min.js"></script>
+    <!-- rangeslider -->
+    <script type="text/javascript" src="../assets/scripts/libs/rangeslider.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var $element = $('input[type="range"]');
+            var $handle;
+
+            $element.rangeslider({
+                polyfill: false,
+                onInit: function() {
+                    $handle = $('.rangeslider__handle', this.$range);
+                    updateHandle($handle[0], this.value);
+                    $("#amount-label").html('<span class="speed"><small>SPEED</small>  </span>' + this.value);
+                }
+            }).on('input', function() {
+                updateHandle($handle[0], this.value);
+                $("#amount-label").html('<span class="speed"><small>SPEED</small>  </span>' + this.value);
+            });
+
+            function updateHandle(el, val) {
+                el.textContent = val;
+            }
+
+            $('input[type="range"]').rangeslider();
+
+        });
+
+    </script>
+    <style>
+        .rangeslider,
+        .rangeslider__fill {
+            display: block;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        .rangeslider {
+            background: #fff;
+            position: relative;
+        }
+
+        .rangeslider--horizontal {
+            height: 3px;
+            width: 100%;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .rangeslider--disabled {
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+            opacity: 0.4;
+        }
+
+        .rangeslider__fill {
+            background: #16b0c7;
+            position: absolute;
+        }
+
+        .rangeslider--horizontal .rangeslider__fill {
+            top: 0;
+            height: 100%;
+        }
+
+        .rangeslider__handle {
+            background: #16b0c7;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            width: 3.2em;
+            height: 3.2em;
+            position: absolute;
+            -moz-border-radius: 22px;
+            -webkit-border-radius: 22px;
+            border-radius: 22px;
+            line-height: 3.2em;
+            text-align: center;
+            font-size: 12px;
+            box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2)
+        }
+
+        .rangeslider--horizontal .rangeslider__handle {
+            top: -17px;
+            touch-action: pan-y;
+            -ms-touch-action: pan-y;
+        }
+
+        input[type="range"]:focus+.rangeslider .rangeslider__handle {
+            -moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+            -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Wrap -->
+    <div class="wrap">
+
+        <!-- 코인선물하기 -->
+        <div class="sponsoring">
+            <div class="header">
+                <button type="button" class="close" aria-label="닫기" onclick="window.close()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                <p>코인 선물하기</p>
+            </div>
+
+            <ul class="chat chat-preview">
+                <li class="left clearfix sponchat spon-lv04">
+                    <span class="chat-img"><img src="http://placehold.it/40/a4c218/fff&text=M" alt="User Avatar" class="img-circle" /></span>
+                    <div class="chat-body clearfix">
+                        <div class="user-info">
+                            <em class="name">마더파더</em>
+                            <small class="text-muted"> 5초전</small>
+                        </div>
+                        <div class="amount"><img src="../assets/images/ic_shoot_coin.svg" class="coin"><span>0.0008</span> <small>LIVE</small>
+                        </div>
+                        <p>레벨04 스폰서 / 인사한번만 해주세요.... 내용을 많이 많이 입력하려면 높이 값이 더 높아야 겠습니다. 얼마나 길게 작성할수 있을까요. </p>
+                    </div>
+                </li>
+            </ul>
+
+            <form>
+
+                <div class="form-group mt-2">
+
+                    <label class="text-left">GAS 요금</label>
+
+                    <span class="h5 float-right invisible" id="amount-label">
+                            <span class="speed"><small>SPEED</small> </span>
+                    </span>
+
+                    <div class="sliderbox">
+                        <div class="slider">
+                            <input id="range-slider" type="range" min="0" max="100" step="10" value="50" class="form-control">
+                            <small><span class="float-left">SLOW</span> <span>NORMAL</span> <span class="float-right">FAST</span></small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>비밀번호</label>
+                    <input type="password" class="form-control" placeholder="영어, 숫자 혼합 8자리 이상">
+                </div>
+            </form>
+
+            <div class="btn-bottom btn-group">
+                <a class="btn-lg mr-2 btn-pointcolor2" href="main_keeper_coin.html" role="button">이전</a>
+                <a class="btn-lg col-6 btn-pointcolor2" href="main_keeper_chat02.html" role="button">선물하기</a>
+            </div>
+
+        </div>
+        <!-- //코인선물하기 -->
+
+    </div>
+    <!-- //wrap -->
+
+</body>
+
+</html>

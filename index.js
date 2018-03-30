@@ -130,7 +130,6 @@ app.route('/popup_account_04_appView', require('./components/popup_account_04_ap
 app.route('/popup_usermode_appView', require('./components/popup_usermode_appView'));
 app.route('/popup_keeper_01_appView', require('./components/popup_keeper_01_appView'));
 app.route('/main_shoot_onairlist', require('./components/main_shoot_onairlist'));
-app.route('/accountList', require('./components/accountList'));
 
 // start!
 document.body.appendChild(app.start());
