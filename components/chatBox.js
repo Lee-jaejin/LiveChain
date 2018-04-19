@@ -182,19 +182,19 @@ function chatBox (account) {
     `;
 
     function coinModalWindow () {
-        const {BrowserWindow} = require('electron').remote;
+        const {BrowserWindow, ipcRenderer} = require('electron').remote;
 
         var coinWindow = new BrowserWindow({
             width : 348,
             height : 470,
             resizable : false,
-            frame : false
+            frame : false,
         });
         coinWindow.show();
         coinWindow.on('close', function () {
             coinWindow = null;
         });
 
-        coinWindow.loadURL('file://' + path.join(__dirname,'main_keeper_coin.html'));
+        coinWindow.loadURL('file://' + path.join(__dirname,'./main_keeper_coin.html'));
     }
 }

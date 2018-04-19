@@ -36,16 +36,14 @@ module.exports = function (state, emit) {
                         <h3 class="popup-title">My Account</h3>
                         <h2 class="popup-logo text-hide">SHOOT</h2>
                     </header>
-            
-                        <div id="accountlist" class="account-list">
-                            ${ div }
-                        </div>
-                        <!--//account-list-->
+                    <div id="accountlist" class="account-list">
+                        ${ div }
+                    </div>
+                    <!--//account-list-->
                 </div>
                 <!--//container-->
             </div>
             <!--//popup-bgimg-->
-            
         </body>
     `
 

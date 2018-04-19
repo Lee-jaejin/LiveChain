@@ -111,6 +111,18 @@ app.use(function (state, emitter) {
     emitter.on('usermode', function () {
         emitter.emit('pushState', '/popup_usermode_appView')
     })
+
+    emitter.on('coinView', function () {
+        emitter.emit('pushState', '/coinWindow')
+    })
+
+    emitter.on('account_01', function () {
+        emitter.emit('pushState', '/popup_account_01_appView')
+    })
+
+    emitter.on('account_04', function () {
+        emitter.emit('pushState', '/popup_account_04_appView')
+    })
 });
 
 // import base stylesheet
@@ -118,9 +130,6 @@ css('./style.css');
 
 // routes
 app.route('/', require('./components/intro'));
-app.route('/view', require('./components/viewer'));
-app.route('/settings', require('./components/settings'));
-app.route('/wallet', require('./components/wallet'));
 app.route('/popup_shooter_01_appView', require('./components/popup_shooter_01_appView'));
 app.route('/main_shooter_appView', require('./components/main_shooter_appView'));
 app.route('/popup_account_01_appView', require('./components/popup_account_01_appView'));
@@ -130,6 +139,7 @@ app.route('/popup_account_04_appView', require('./components/popup_account_04_ap
 app.route('/popup_usermode_appView', require('./components/popup_usermode_appView'));
 app.route('/popup_keeper_01_appView', require('./components/popup_keeper_01_appView'));
 app.route('/main_shoot_onairlist', require('./components/main_shoot_onairlist'));
+app.route('/coinWindow', require('./components/coinWindow'));
 
 // start!
 document.body.appendChild(app.start());

@@ -1,6 +1,6 @@
 {
   "name": "shoot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "dependencies": {
     "browserify": "^15.0.0",

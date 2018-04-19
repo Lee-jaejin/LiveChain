@@ -80,6 +80,12 @@ module.exports = function (state, emit) {
             <!-- //cntbox -->
         </div>
         <!-- //wrap -->
+        
+        <script>
+        var remote = require('electron').remote;
+        
+        remote.getCurrentWindow().setFullScreen(true); // height appear -12pixel.
+        </script>
         </body>
         `
 
@@ -123,5 +129,4 @@ module.exports = function (state, emit) {
             emit('liveToggle', false)
         })
     }
-
 }

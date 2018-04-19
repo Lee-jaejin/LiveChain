@@ -29,9 +29,8 @@
             <form>
                 <div class="form-group">
                     <label>나의 계좌</label>
-                    <select class="form-control" id="">
-                        <option selected>계좌를 선택하세요.</option>
-                        ${ optionAccount() }
+                    <select class="form-control" id="mySelect" onchange="javascript:changeOption(this.options[this.selectedIndex].value)">
+                        <option>계좌를 선택하세요.</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -45,7 +44,7 @@
                 </div>
                 <div class="form-group">
                     <label class="w-100 pt-3">
-                      <div class="balance pb-1"> <strong>My Wallet</strong> 1,523,242 <small>Live</small> </div>
+                        <div class="balance pb-1"> <strong>My Wallet</strong><div id="balancePrint"></div><small>Live</small> </div>
                       후원 LIVE 
                     </label>
                     <div class="input-group coin">
@@ -70,15 +69,35 @@
     <!-- //wrap -->
 
     <script>
-        function optionAccount() {
-            var options = [];
+        var Web3 = require('web3');
+        var {ipcRenderer} = require('electron');
+        var web3 = new Web3();
 
-            for (var i=0; i<web3.eth.accounts; i++) {
-                options += '<option id=${i}>web3.eth.accounts[i]</option>';
-            }
+        web3.setProvider(new web3.providers.HttpProvider('http://localhost:8903'));
 
-            return options;
+        console.log(ipcRenderer.sendSync('synchronous-message', 'ping2'));
+        ipcRenderer.on('asynchronous-reply', function (event, arg) {
+            console.log(arg);
+        });
+        ipcRenderer.send('asynchronous-message', 'ping1');
+
+        var select = document.getElementById("mySelect");
+        var balancePrint = document.getElementById("balancePrint");
+
+        for (var i = 0; i < web3.eth.accounts.length; i++) {
+            select.insertAdjacentHTML('beforeend',
+                `<option id=${i} value=${web3.eth.accounts[i]}>${ web3.eth.accounts[i] }</option>`);
         }
+        
+        function changeOption(selectedValue) {
+            for (var index = 0; index < web3.eth.accounts.length; index++) {
+                if (web3.eth.accounts[index] === selectedValue) {
+                    console.log("changed?");
+                    balancePrint.replaceWith(web3.eth.getBalance(selectedValue).toString(10));
+                }
+            }
+        }
+
     </script>
 
 </body>
