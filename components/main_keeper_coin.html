@@ -59,7 +59,7 @@
             </form>
 
             <div class="btn-bottom">
-                <a class="btn btn-lg btn-pointcolor2" href="main_keeper_coin_02.html" role="button">다음</a>
+                <a class="btn btn-lg btn-pointcolor2" role="button">다음</a>
             </div>
 
         </div>
@@ -92,8 +92,7 @@
         function changeOption(selectedValue) {
             for (var index = 0; index < web3.eth.accounts.length; index++) {
                 if (web3.eth.accounts[index] === selectedValue) {
-                    console.log("changed?");
-                    balancePrint.replaceWith(web3.eth.getBalance(selectedValue).toString(10));
+                    balancePrint.innerHTML = web3.fromWei(web3.eth.getBalance(selectedValue), 'ether').toString(10);
                 }
             }
         }

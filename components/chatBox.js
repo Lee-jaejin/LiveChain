@@ -3,6 +3,7 @@ var path = require('path');
 var imgPath = path.join(__dirname,'../assets/images/ic_shoot_coin.svg');
 var imgPathDefault = path.join(__dirname, '../assets/images/shooter_profile_default.png');
 var imgPath01 = path.join(__dirname, '../assets/images/shooter_profile_01.png');
+var localServer = require('http-server');
 
 module.exports = chatBox;
 
@@ -56,10 +57,9 @@ function chatBox (account) {
                     </div>
                 </div>
                 <!-- //후원금표지 -->
+                
                 <!-- chat-live -->
                 <div id="chat-live" class="chat-live">
-
-
                     <!-- 채팅채팅 -->
                     <div class="chat-box" id="">
 
@@ -166,8 +166,8 @@ function chatBox (account) {
                 <div class="chat-input">
                     <div class="input-group">
                         <a onclick=${ coinModalWindow } class="chat-coin"><img src=${ imgPath } class="coin"></a>
-                        <input type="text" class="form-control chat-text" placeholder="대화를 나눠보세요.">
-                        <button class="btn text-hide" type="button"><sapn class="chat-btn">입력</sapn></button>
+                        <input type="text" id="message" class="form-control chat-text" placeholder="대화를 나눠보세요.">
+                        <button class="btn text-hide" type="button" onclick=${ sendMessage() }><sapn class="chat-btn">입력</sapn></button>
                     </div>
                 </div>
                 <!-- //채팅입력 -->
@@ -181,8 +181,74 @@ function chatBox (account) {
             </div>
     `;
 
+    var skylink = new Skylink();
+
+    function setName() {
+        var input = document.getElementById('name');
+        skylink.setUserData({
+            name: input.value
+        });
+    }
+
+    function joinRoom() {
+        skylink.joinRoom();
+    }
+
+    function leaveRoom() {
+        skylink.leaveRoom();
+    }
+
+    function sendMessage() {
+        var input = document.getElementById('message');
+        skylink.sendP2PMessage(input.value);
+        input.value = '';
+    }
+
+    function addMessage(message, className) {
+        var chatbox = document.getElementById('chatbox'),
+            div = document.createElement('div');
+        div.className = className;
+        div.textContent = message;
+        chatbox.appendChild(div);
+    }
+
+    skylink.on('peerJoined', function(peerId, peerInfo, isSelf) {
+        var user = 'You';
+        if(!isSelf) {
+            user = peerInfo.userData.name || peerId;
+        }
+        addMessage(user + ' joined the room', 'action');
+    });
+
+    skylink.on('peerUpdated', function(peerId, peerInfo, isSelf) {
+        if(isSelf) {
+            user = peerInfo.userData.name || peerId;
+            addMessage('You\'re now known as ' + user, 'action');
+        }
+    });
+
+    skylink.on('peerLeft', function(peerId, peerInfo, isSelf) {
+        var user = 'You';
+        if(!isSelf) {
+            user = peerInfo.userData.name || peerId;
+        }
+        addMessage(user + ' left the room', 'action');
+    });
+
+    skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
+        var user = 'You',
+            className = 'you';
+        if(!isSelf) {
+            user = peerInfo.userData.name || peerId;
+            className = 'message';
+        }
+        addMessage(user + ': ' + message.content, className);
+    });
+
+    skylink.init('a6940b14-7779-4ba4-8f97-2999bb7877e9');
+
     function coinModalWindow () {
-        const {BrowserWindow, ipcRenderer} = require('electron').remote;
+        const {BrowserWindow} = require('electron').remote;
 
         var coinWindow = new BrowserWindow({
             width : 348,

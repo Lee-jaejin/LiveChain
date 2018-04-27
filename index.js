@@ -112,10 +112,6 @@ app.use(function (state, emitter) {
         emitter.emit('pushState', '/popup_usermode_appView')
     })
 
-    emitter.on('coinView', function () {
-        emitter.emit('pushState', '/coinWindow')
-    })
-
     emitter.on('account_01', function () {
         emitter.emit('pushState', '/popup_account_01_appView')
     })
@@ -139,7 +135,6 @@ app.route('/popup_account_04_appView', require('./components/popup_account_04_ap
 app.route('/popup_usermode_appView', require('./components/popup_usermode_appView'));
 app.route('/popup_keeper_01_appView', require('./components/popup_keeper_01_appView'));
 app.route('/main_shoot_onairlist', require('./components/main_shoot_onairlist'));
-app.route('/coinWindow', require('./components/coinWindow'));
 
 // start!
 document.body.appendChild(app.start());
