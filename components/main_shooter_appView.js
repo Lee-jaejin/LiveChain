@@ -2,6 +2,7 @@ var html = require('choo/html');
 var path = require('path');
 var onload = require('on-load');
 var chatBox = require('./components/chatBox');
+var localServer = require('http-server');
 
 var mediaDevices = require('../lib/media-devices');
 var broadcast = require('../lib/broadcast');
@@ -40,7 +41,7 @@ module.exports = function (state, emit) {
                 </div>
             
                 <!-- videobox -->
-                <div class="videobox">
+                <div class="videobox" onload=${ loadChatServer }>
                     <!-- Video Player -->
                     <div class="shootplayer_wrap">
                         <div class="shootplayer_content">

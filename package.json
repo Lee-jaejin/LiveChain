@@ -5,7 +5,6 @@
   "dependencies": {
     "browserify": "^15.0.0",
     "choo": "^6.6.1",
-    "electron": "1.7.10",
     "end-of-stream": "^1.4.0",
     "getusermedia": "^2.0.0",
     "hypercore": "^6.11.0",
@@ -19,20 +18,25 @@
     "web3": "^0.19.1",
     "web3admin": "^0.4.4",
     "webm-cluster-stream": "^1.0.0",
-    "http-server": "^0.11.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Lee-jaejin/Shoot.git"
   },
   "scripts": {
-    "start": "npm run build && electron app.js",
-    "build": "node build.js"
+    "start": "node build.js && electron app.js",
+    "build": "electron-packager . Shoot"
   },
   "author": "Mathias Buus (@mafintosh), Lee Jaejin (@kosmos)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Lee-jaejin/Shoot/issues"
   },
-  "homepage": "https://github.com/Lee-jaejin/Shoot"
+  "homepage": "https://github.com/Lee-jaejin/Shoot",
+  "devDependencies": {
+    "asar": "^0.14.3",
+    "concurrently": "^3.5.1",
+    "electron": "^1.7.10",
+    "electron-packager": "^12.0.1"
+  }
 }
