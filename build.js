@@ -1,10 +1,10 @@
-var fs = require('fs')
-var path = require('path')
+var fs = require('fs');
+var path = require('path');
 
-var browserify = require('browserify')
+var browserify = require('browserify');
 
 // output file
-var ws = fs.createWriteStream('bundle.js')
+var ws = fs.createWriteStream('bundle.js');
 
 // browserify options (mostly to work with Electron)
 var opts = {
@@ -32,4 +32,4 @@ var opts = {
 browserify(opts)
   .transform('sheetify/transform', { use: [ 'sheetify-nested' ] })
   .bundle()
-  .pipe(ws)
+  .pipe(ws);

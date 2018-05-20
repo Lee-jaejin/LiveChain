@@ -1,11 +1,11 @@
-var html = require('choo/html')
+var html = require('choo/html');
 
 module.exports = function (state, emit) {
     return html`
         <body class="popup-dark" onload=${ br }>
             <h3>Loading Accounts ... </h3>
         </body>
-    `
+    `;
 
     function br() {
 
@@ -20,9 +20,6 @@ module.exports = function (state, emit) {
                 emit('account_01');
             }
             else {
-                if (state.roomEntryAccount === '') {
-                    emit('coinView');
-                }
                 emit('account_04');
             }
         }

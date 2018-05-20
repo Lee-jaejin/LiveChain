@@ -166,7 +166,7 @@ function chatBox (account) {
                     <div class="input-group">
                         <a onclick=${ coinModalWindow } class="chat-coin"><img src=${ imgPath } class="coin"></a>
                         <input type="text" id="message" class="form-control chat-text" placeholder="대화를 나눠보세요.">
-                        <button class="btn text-hide" type="button" onclick=${ sendMessage() }><sapn class="chat-btn">입력</sapn></button>
+                        <button class="btn text-hide" type="button"><sapn class="chat-btn">입력</sapn></button>
                     </div>
                 </div>
                 <!-- //채팅입력 -->
@@ -180,6 +180,7 @@ function chatBox (account) {
             </div>
     `;
 
+    // coinWindow
     function coinModalWindow () {
         const {BrowserWindow} = require('electron').remote;
 

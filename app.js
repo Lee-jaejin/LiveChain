@@ -18,7 +18,7 @@ app.on('ready', function () {
       }
   });
 
-  mainWin.loadURL('file://' + path.join(__dirname, 'index.html'));
+  mainWin.loadURL('file://' + path.join(__dirname, '/index.html'));
   mainWin.openDevTools();
   mainWin.on('close', function () {
     mainWin = null;
