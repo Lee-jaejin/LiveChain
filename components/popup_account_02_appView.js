@@ -22,14 +22,14 @@ module.exports = function (state, emit) {
                             <div class="form-group">
                                 <label for="">비밀번호</label>
                                     <div class="form-inline">
-                                        ${ input(state.accountPS, "영어, 숫자 혼합 8자리 이상", reRender) }
+                                        ${ input(state.accountPS, "영어, 숫자 혼합 8자리 이상", "password", reRender) }
                                         ${ safetyIcon(state.accountPS, reRender) }
                                         <!--level00~level03까지 4단계-->
                                     </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="">비밀번호 확인</label>
-                                ${ input(state.temp, "다시 한번 입력해주세요. ", psSameCheck) }
+                                ${ input(state.temp, "다시 한번 입력해주세요. ", "password", psSameCheck) }
                             </div>
 
                             <small id="" class="form-text text-muted"> SHOOT은 귀하의 정보를 보관하지 않습니다. 계정에 엑세스하거나 비밀번호를 재설정하거나, 트랜잭션을 되돌릴 수 없습니다. 비밀번호 및 Account Address를 보호하고, 항상 확인하십시오. 귀하의 보안은 귀하의 책임입니다. </small>

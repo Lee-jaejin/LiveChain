@@ -17,7 +17,8 @@
     "sheetify-nested": "^1.0.2",
     "web3": "^0.19.1",
     "web3admin": "^0.4.4",
-    "webm-cluster-stream": "^1.0.0"
+    "webm-cluster-stream": "^1.0.0",
+    "@e-e-e/hyperchat": "^0.0.4"
   },
   "repository": {
     "type": "git",

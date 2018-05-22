@@ -14,14 +14,17 @@ module.exports = function (state, emit) {
                 </header>
     
                     <div class="room-setting">
-                        <h6 class="fw-light mb-3">방 이름을 설정해주세요. (필수) </h6>
+                        <h6 class="fw-light mb-3">방 설정을 해주세요. (필수) </h6>
     
                         <form>
                             <div class="form-group mb-5">
                                 <label for="">방 이름</label>
                                 <input type="text" class="form-control form-control-lg" id="" placeholder="방 이름을 입력하세요." onblur=${ roomNameSave }> 
                             </div>
-                          
+                            <div class="form-group mb-5">
+                                <label for="">닉네임</label>
+                                <input type="text" class="form-control form-control-lg" id="" placeholder="닉네임을 입력하세요." onblur=${ shooterNameSave }> 
+                            </div>
                         <h6 class="fw-light mb-3">On Air 방송 공개 여부 (선택) </h6>  
                             <p class="fw-light text-muted"> 동의할 경우, SHOOT 웹사이트 On Air List 채널에 방송이 공개됩니다. </p>
                             <div class="form-check">
@@ -41,9 +44,11 @@ module.exports = function (state, emit) {
         </body>
     `
 
+    function shooterNameSave(e) {
+        state.shooterName = e.target.value;
+    }
+
     function roomNameSave(e) {
         state.roomName = e.target.value;
-
-        emit('updateRoomName');
     }
 }

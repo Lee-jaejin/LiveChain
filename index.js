@@ -11,6 +11,10 @@ app.use(function (state, emitter) {
     state.roomName = '';
     state.roomEntryAccount = '';
 
+    // text chatting
+    state.shooterName = '';
+    state.textChatHash = '';
+
     // initial state
     state.hash = '';
     state.live = false;

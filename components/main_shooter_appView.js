@@ -67,8 +67,7 @@ module.exports = function (state, emit) {
                                 <dd class="name">${ state.roomEntryAccount }</dd>
                                 <input value=${ state.hash }>
                                 <dt class="tit">${ state.roomName }</dt>
-                                <dd class="hashtag" id="hashtag"><a href="">#괌</a><a href="">#GUAM</a><a href="">#롱보드</a><a href="">#괌여행</a><a href="">#여행</a><a href="">#제주항공</a><a href="">#롱보드여신</a><a href="">#JJ노마드</a></dd>
-                                <dd class="detail">굿데이의 롱보드 여행기 괌 편 [JJ노마드] 롱보드와 함께 어디든지 떠난다! 지난 3년 동안 롱보드와 함께 19개국을 여행 다닌 롱보더, 트래블러 굿데이. 이번에는 괌이다! 괌에서 롱보드와 함께 자유로운 여행스토리를 전한다. 괌에서 즐겨보고 싶은 위시리스트를 작성한 굿데이. 자 이제 그럼 괌으로 출발!</dd>
+                                <dd class="shooter">${ state.shooterName }</dd>
                             </dl>
                         </div>
                     </div>
