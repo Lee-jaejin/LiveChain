@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6149380f-2bc3-4c99-bb35-acee9282a53a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/chatBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/chatBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/input.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main_shooter_appView.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main_shooter_appView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/popup_account_02_appView.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/popup_account_02_appView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/popup_shooter_01_appView.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/popup_shooter_01_appView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/broadcast.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/broadcast.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +21,8 @@
           <file leaf-file-name="chatBox.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/components/chatBox.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="128" column="21" lean-forward="true" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+                <state relative-caret-position="242">
+                  <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
                   <folding>
                     <marker date="1526913129554" expanded="true" signature="502:5682" ph="..." />
                     <marker date="1526913129554" expanded="true" signature="686:923" ph="..." />
@@ -87,6 +79,15 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="build.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/build.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="184">
+                  <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -111,27 +112,16 @@
           <file leaf-file-name="broadcast.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/broadcast.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-36">
-                  <caret line="37" selection-start-line="37" selection-end-line="37" />
+                <state relative-caret-position="735">
+                  <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main_shoot_onairlist.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/components/main_shoot_onairlist.js">
+          <file leaf-file-name="media-devices.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lib/media-devices.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="393">
-                  <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="main_keeper_coin.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/components/main_keeper_coin.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="50" column="42" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="42" />
-                </state>
+                <state relative-caret-position="-722" />
               </provider>
             </entry>
           </file>
@@ -239,7 +229,6 @@
         <option value="$PROJECT_DIR$/keeper/main_keeper.html" />
         <option value="$PROJECT_DIR$/components/accountList.js" />
         <option value="$USER_HOME$/work/서부발전소/test1 (1)/test1.html" />
-        <option value="$PROJECT_DIR$/lib/broadcast.js" />
         <option value="$PROJECT_DIR$/lib/watch.js" />
         <option value="$PROJECT_DIR$/components/eventDialog.js" />
         <option value="$USER_HOME$/work/서부발전소/generator/generatorPage.html" />
@@ -260,6 +249,7 @@
         <option value="$PROJECT_DIR$/components/main_shooter_appView.js" />
         <option value="$PROJECT_DIR$/components/popup_shooter_01_appView.js" />
         <option value="$PROJECT_DIR$/components/chatBox.js" />
+        <option value="$PROJECT_DIR$/lib/broadcast.js" />
       </list>
     </option>
   </component>
@@ -518,12 +508,12 @@
       <workItem from="1525684416401" duration="4168000" />
       <workItem from="1526099751689" duration="467000" />
       <workItem from="1526637742695" duration="11576000" />
-      <workItem from="1526815100398" duration="8179000" />
+      <workItem from="1526815100398" duration="9336000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395584000" />
+    <option name="totallyTimeSpent" value="396741000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -601,7 +591,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/popup_account_03.html" />
     <entry file="file://$PROJECT_DIR$/assets/styles/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42105">
@@ -699,13 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
           <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -811,13 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/broadcast.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/popup_keeper_01_appView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-169" />
@@ -827,13 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="617">
           <caret line="53" column="1" lean-forward="true" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -847,6 +815,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/media-devices.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-722" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/broadcast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/input.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -856,8 +850,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/chatBox.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="128" column="21" lean-forward="true" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+        <state relative-caret-position="242">
+          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
           <folding>
             <marker date="1526913129554" expanded="true" signature="502:5682" ph="..." />
             <marker date="1526913129554" expanded="true" signature="686:923" ph="..." />
